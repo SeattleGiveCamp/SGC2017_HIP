@@ -9,10 +9,7 @@ Hi Paul,
 
 Our API doesn't yet support creating the volunteer hours, but perhaps this would be useful?
 
-Use custom integrations to send data via webhooks to LGL
-
-We can also turn on the API for this customer also. Here's the documentation: 
-
+Use custom integrations to send data via webhooks to LGL. We can also turn on the API for this customer also. Here's the documentation: 
 https://api.littlegreenlight.com/api-docs/static.html
 
 Thanks!
@@ -20,7 +17,8 @@ Nick
 
 --
 Nick Bicknell
-{#HS:426541343-58167#}  	
+
+
 On Tue, Sep 5, 2017 at 3:58 PM EDT, Paul Litwin <paul@litwinconsulting.com> wrote:
 I read something online about the beta testing of the LGL API. Is this in production yet?
 
