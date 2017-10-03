@@ -7,4 +7,4 @@ Volunteer hour reporting app. With integration into LittleGreenLight. Different 
 ## Platform Target
 - iOS
 ## Public/Private
-?
+Likely private. Waiting confirmation from nonprofit.
