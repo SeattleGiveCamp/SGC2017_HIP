@@ -1,6 +1,9 @@
 # SGC2017_HIP
 Hunger Intervention Program project repo for SeattleGiveCamp 2017
 
+# Organization Mission Statement 
+The mission of Hunger Intervention Program (HIP) is to increase food security for underserved populations in North King County through nutritious meals, educational programs, and advocacy.
+
 # Project Request
 Volunteer hour reporting app. With integration into Little Green Light. Different programs and different tasks. Possible integration with GPS and Facebook.  
 
