@@ -11,8 +11,16 @@
 		<StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
 			<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
 				<ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-					<Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-				</ContentView>
+                    <Image VerticalOptions="Center" HeightRequest="64">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="iOS" Value="xamarin_logo.png" />
+                                <On Platform="Android" Value="xamarin_logo.png" />
+                                <On Platform="UWP" Value="Assets\xamarin_logo.png" />
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                </ContentView>
 			</StackLayout>
 		</StackLayout>
 		<ScrollView Grid.Row="1">
