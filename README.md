@@ -32,5 +32,5 @@ I ask because we are trying to build a mobile app for an organization that could
 ## Platform Target
 - iOS
 ## Public/Private
-Likely private. Waiting confirmation from nonprofit.
+Public.
 
