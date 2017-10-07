@@ -1,0 +1,58 @@
+﻿@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login");
+    }
+
+    WebSecurity.RequireAuthenticatedUser();
+
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Create";
+}
+
+<hgroup class="title">
+    <h1>@Page.Title.</h1>
+    <h2>Add a new program.</h2>
+</hgroup>
+
+
+<form id="create">
+    <fieldset>
+        <legend>Create a Program</legend>
+        <ol>
+            <li class="name">
+                <label for="name">Program Name</label>
+                <input type="text" id="name" name="name" />
+            </li>
+            <li class="Description">
+                <label for="description">Program Description</label>
+                <textarea id="description" name="description" form="create" > </textarea>
+            </li>
+            <li class="type">
+                <label for="type">Program Type</label>
+                <select id="description" name="description" form="create">
+                    <option value="t1">Type 1</option>
+                    <option value="t2">Type 2</option>
+                    <option value="t3">Type 3</option>
+                </select>
+            </li>
+            <li class="one-time">
+                <label for="one-time">One-Time Event</label>
+                <input type="checkbox" id="one-time" name="one-time" value="true" />
+            </li>
+            <li class="start-time">
+                <label for="start-time">Start Time</label>
+                <input type="time" id="start-time" name="start-time" />
+            </li>
+            <li class="end-time">
+                <label for="end-time">End Time</label>
+                <input type="time" id="end-time" name="end-time" />
+            </li>
+            <li class="date">
+                <label for="date">Date</label>
+                <input type="date" id="end-time" name="date" />
+            </li>
+        </ol>
+        <input type="submit" value="Create" />
+    </fieldset>
+</form>
