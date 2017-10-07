@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HIP.Models;
 
 namespace HIP
 {
@@ -14,12 +15,12 @@ namespace HIP
             items = new List<Event>();
             var mockItems = new List<Event>
             {
-                new Event { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description.", Date=DateTime.Now.ToShortDateString() },
-                new Event { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "First item", Description="This is an item description.", Date=DateTime.Now.ToShortDateString() },
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
             };
 
             foreach (var item in mockItems)

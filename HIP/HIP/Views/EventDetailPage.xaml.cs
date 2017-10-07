@@ -1,7 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
     public partial class EventDetailPage : ContentPage
@@ -15,7 +15,7 @@ namespace HIP
 
             var item = new Event
             {
-                Text = "Item 1",
+                Name = "Item 1",
                 Description = "This is an item description."
             };
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
     public partial class ItemsPage : ContentPage

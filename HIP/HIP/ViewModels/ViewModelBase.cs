@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
     public class ViewModelBase : BaseViewModel

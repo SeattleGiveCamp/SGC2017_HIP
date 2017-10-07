@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Plugin.Connectivity;
-
+using HIP.Models;
 namespace HIP
 {
     public class CloudDataStore : IDataStore<Event>

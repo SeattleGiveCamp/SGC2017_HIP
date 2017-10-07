@@ -1,7 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
     public partial class NewItemPage : ContentPage
@@ -12,11 +12,11 @@ namespace HIP
         {
             InitializeComponent();
 
-            Item = new Event
-            {
-                Text = "Item name",
-                Description = "This is an item description."
-            };
+            //Item = new Event
+            //{
+            //    //Text = "Item name",
+            //    //Description = "This is an item description."
+            //};
 
             BindingContext = this;
         }
