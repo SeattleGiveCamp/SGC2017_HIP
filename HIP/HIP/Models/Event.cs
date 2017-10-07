@@ -9,32 +9,35 @@ namespace HIP.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Boolean IsRecurring { get; set; }
-        public string Date { get; set; } //TODO mock for date
-        public DateTime NextTime { get; }  //TODO: Currently statically setting these values. Need to write logic to handle these correctly
-        public Double DurationInHours { get; }
 
-        private DateTime startTime;
-        private DateTime endTime;
+		List<EventOccurrence> Occurrences { get; } = new List<EventOccurrence>();
+        List<EventBlackout> Blackouts { get; } = new List<EventBlackout>();
 
         //TODO remove, just to mock
         public Event()
         {
         }
 
-        //For a single-time event
-        public Event(string name, string description, DateTime singleEventDate, Double durtionInHours)
-        {
-            Name = name;
-            Description = description;
-            IsRecurring = false;
+		//For a single-time event
+		public Event(string name, string description, TimeSpan eventDuration, TimeSpan hourDuration)
+		{
+			Name = name;
+			Description = description;
+			EventOccurrence singleTimeOccurrence = new EventOccurrence(hourDuration, eventDuration);
+			Occurrences.Add(singleTimeOccurrence);
+		}
 
-            //TODO: Currently statically setting these values. Need to write logic to handle these correctly
-            NextTime = singleEventDate;
-            DurationInHours = durtionInHours;
-        }
 
-        //For a recurring event
-        
-    }
+		//For a recurring event
+		public Event(string name, string description, TimeSpan eventDuration, TimeSpan hourDuration, DayOfWeek occurrenceDay)
+		{
+			Name = name;
+			Description = description;
+			Occurrences = new List<EventOccurrence>();
+			EventOccurrence singleTimeOccurrence = new RecurringEventOccurrence(hourDuration, eventDuration, occurrenceDay);
+			Occurrences.Add(singleTimeOccurrence);
+		}
+
+
+	}
 }
