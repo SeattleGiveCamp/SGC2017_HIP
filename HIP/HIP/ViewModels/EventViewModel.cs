@@ -13,19 +13,12 @@ namespace HIP.ViewModels
 		{
 			Event = model;
 			AddToCalendar = new Command(() => {
-				MessagingService.Current.SendMessage<MessagingServiceAlert>("message", new MessagingServiceAlert
-				{
-					Title = "Event Creation",
-					Message = "Pfff",
-					Cancel = "OK"
-				});
-
-                //CalendarService.AddReminderAsync();
+                await CalendarService.AddReminderAsync();
 			});
 
             Name = model.Name;
             Description = model.Description;
-            Date = model.Date;
+            Date = DateTime.Now.ToString();
 		}
 
         public string Name { get; set; }
