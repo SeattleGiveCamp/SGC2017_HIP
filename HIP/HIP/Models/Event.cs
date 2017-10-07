@@ -19,22 +19,24 @@ namespace HIP.Models
         }
 
 		//For a single-time event
-		public Event(string name, string description, TimeSpan eventDuration, TimeSpan hourDuration)
+		public Event(string id, string name, string description, DateTime eventStart, DateTime eventEnd)
 		{
-			Name = name;
+            Id = id;
+            Name = name;
 			Description = description;
-			EventOccurrence singleTimeOccurrence = new EventOccurrence(hourDuration, eventDuration);
+			EventOccurrence singleTimeOccurrence = new EventOccurrence(eventStart, eventEnd);
 			Occurrences.Add(singleTimeOccurrence);
 		}
 
 
 		//For a recurring event
-		public Event(string name, string description, TimeSpan eventDuration, TimeSpan hourDuration, DayOfWeek occurrenceDay)
+		public Event(string id, string name, string description, DateTime eventStart, DateTime eventEnd, DateTime recurrenceStart, DateTime recurrenceEnd, DayOfWeek occurrenceDay)
 		{
+			Id = id;
 			Name = name;
 			Description = description;
 			Occurrences = new List<EventOccurrence>();
-			EventOccurrence singleTimeOccurrence = new RecurringEventOccurrence(hourDuration, eventDuration, occurrenceDay);
+            EventOccurrence singleTimeOccurrence = new RecurringEventOccurrence(eventStart, eventEnd, occurrenceDay, recurrenceStart, recurrenceEnd);
 			Occurrences.Add(singleTimeOccurrence);
 		}
 

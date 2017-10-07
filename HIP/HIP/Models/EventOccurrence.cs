@@ -3,13 +3,13 @@ namespace HIP.Models
 {
 	public class EventOccurrence
 	{
-		public TimeSpan HourDuration { get; set; }
-		public TimeSpan EventDuration { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
 
-		public EventOccurrence(TimeSpan hourDuration, TimeSpan eventDuration)
+		public EventOccurrence(DateTime startTime, DateTime endTime)
 		{
-			HourDuration = hourDuration;
-			EventDuration = eventDuration;
+            Start = startTime;
+            End = endTime;
 		}
 	}
 }

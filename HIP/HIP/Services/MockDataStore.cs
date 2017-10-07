@@ -13,14 +13,14 @@ namespace HIP
         public MockDataStore()
         {
             items = new List<Event>();
-            var mockItems = new List<Event>
+			var mockItems = new List<Event>
             {
-                new Event { Id = Guid.NewGuid().ToString(), Name = "First item", Description="This is an item description.", Date=DateTime.Now.ToShortDateString() },
-                new Event { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
-                new Event { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "First item", Description="This is an item description."},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is an item description."},
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is an item description." },
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is an item description." },
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is an item description." },
+                new Event { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is an item description." }
             };
 
             foreach (var item in mockItems)
