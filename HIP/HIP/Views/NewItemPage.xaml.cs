@@ -6,13 +6,13 @@ namespace HIP
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Event Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Event
             {
                 Text = "Item name",
                 Description = "This is an item description."

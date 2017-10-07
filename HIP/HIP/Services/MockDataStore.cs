@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 
 namespace HIP
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore<Event>
     {
-        List<Item> items;
+        List<Event> items;
 
         public MockDataStore()
         {
-            items = new List<Item>();
-            var mockItems = new List<Item>
+            items = new List<Event>();
+            var mockItems = new List<Event>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." },
+                new Event { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description.", Date=DateTime.Now.ToShortDateString() },
+                new Event { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
+                new Event { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." , Date=DateTime.Now.ToShortDateString()},
             };
 
             foreach (var item in mockItems)
@@ -28,16 +28,16 @@ namespace HIP
             }
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<bool> AddItemAsync(Event item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<bool> UpdateItemAsync(Event item)
         {
-            var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            var _item = items.Where((Event arg) => arg.Id == item.Id).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -46,18 +46,18 @@ namespace HIP
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var _item = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            var _item = items.Where((Event arg) => arg.Id == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<Event> GetItemAsync(string id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Event>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

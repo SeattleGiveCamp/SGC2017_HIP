@@ -13,7 +13,7 @@ namespace HIP
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Event
             {
                 Text = "Item 1",
                 Description = "This is an item description."
@@ -28,6 +28,11 @@ namespace HIP
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+        }
+
+        void Submit_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }
