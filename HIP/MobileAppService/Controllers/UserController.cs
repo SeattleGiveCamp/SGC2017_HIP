@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using HIP.Models;
+using HIP.MobileAppService.Models;
 
 namespace HIP.Controllers
 {
@@ -21,14 +21,14 @@ namespace HIP.Controllers
 		}
 
 		[HttpGet("{Email}")]
-		public Item GetItem(string email)
+		public UserModel GetItem(string email)
 		{
-			Item item = UserRepository.Get(email);
+			UserModel item = UserRepository.Get(email);
 			return item;
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody]Item item)
+		public IActionResult Create([FromBody]UserModel item)
 		{
 			try
 			{
@@ -48,7 +48,7 @@ namespace HIP.Controllers
 		}
 
 		[HttpPut]
-		public IActionResult Edit([FromBody] Item item)
+		public IActionResult Edit([FromBody] UserModel item)
 		{
 			try
 			{
