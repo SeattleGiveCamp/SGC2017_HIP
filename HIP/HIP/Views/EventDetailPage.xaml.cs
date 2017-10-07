@@ -4,12 +4,12 @@ using Xamarin.Forms;
 
 namespace HIP
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class EventDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        EventDetailViewModel viewModel;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
-        public ItemDetailPage()
+        public EventDetailPage()
         {
             InitializeComponent();
 
@@ -19,11 +19,11 @@ namespace HIP
                 Description = "This is an item description."
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new EventDetailViewModel(item);
             BindingContext = viewModel;
         }
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public EventDetailPage(EventDetailViewModel viewModel)
         {
             InitializeComponent();
 

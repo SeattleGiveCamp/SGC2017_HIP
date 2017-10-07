@@ -4,10 +4,10 @@ using Xamarin.Forms;
 
 namespace HIP
 {
-    public class ItemDetailViewModel : ViewModelBase
+    public class EventDetailViewModel : ViewModelBase
     {
         public Event Item { get; set; }
-        public ItemDetailViewModel(Event item = null)
+        public EventDetailViewModel(Event item = null)
         {
             Title = item?.Text;
             Item = item;
