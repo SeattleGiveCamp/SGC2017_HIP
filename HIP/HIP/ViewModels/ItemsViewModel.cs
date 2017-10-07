@@ -4,23 +4,24 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using HIP.Models;
 
 namespace HIP
 {
     public class ItemsViewModel : ViewModelBase
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Event> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<Event>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Event>(this, "AddItem", async (obj, item) =>
             {
-                var _item = item as Item;
+                var _item = item as Event;
                 Items.Add(_item);
                 await DataStore.AddItemAsync(_item);
             });

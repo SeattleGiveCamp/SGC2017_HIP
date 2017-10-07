@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
     public partial class ItemsPage : ContentPage
@@ -19,11 +19,11 @@ namespace HIP
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as Event;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new EventDetailPage(new EventDetailViewModel(item)));
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;

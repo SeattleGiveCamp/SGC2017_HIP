@@ -4,17 +4,23 @@ using System.Text;
 
 namespace HIP.Models
 {
-    class Event
+    public class Event
     {
-        public string Name { get; }
-        public string Description { get; }
-        public Boolean IsRecurring { get; }
-
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Boolean IsRecurring { get; set; }
+        public string Date { get; set; } //TODO mock for date
         public DateTime NextTime { get; }  //TODO: Currently statically setting these values. Need to write logic to handle these correctly
         public Double DurationInHours { get; }
 
         private DateTime startTime;
         private DateTime endTime;
+
+        //TODO remove, just to mock
+        public Event()
+        {
+        }
 
         //For a single-time event
         public Event(string name, string description, DateTime singleEventDate, Double durtionInHours)

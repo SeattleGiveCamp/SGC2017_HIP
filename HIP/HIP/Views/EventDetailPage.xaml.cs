@@ -1,33 +1,38 @@
 ﻿using System;
 
 using Xamarin.Forms;
-
+using HIP.Models;
 namespace HIP
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class EventDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        EventDetailViewModel viewModel;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
-        public ItemDetailPage()
+        public EventDetailPage()
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Event
             {
-                Text = "Item 1",
+                Name = "Item 1",
                 Description = "This is an item description."
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new EventDetailViewModel(item);
             BindingContext = viewModel;
         }
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public EventDetailPage(EventDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+        }
+
+        void Submit_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }
