@@ -4,7 +4,8 @@
 		<Label Text="{Binding Item.Name}" FontSize="Medium" />
 		<Label Text="{Binding Item.Description}" FontSize="Small" />
         <Label Text="{Binding Item.Date}" FontSize="Small" />
-        <Entry Placeholder="Enter hours here" />
+
+        <Button Text="Add to Calendar" Clicked="AddToCalendar_Clicked" />
         <Button Text="Submit" Clicked="Submit_Clicked" />
 	</StackLayout>
 </ContentPage>
