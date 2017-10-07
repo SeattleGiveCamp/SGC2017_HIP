@@ -1,5 +1,5 @@
 ﻿using System;
-namespace HIP.Models
+namespace HIP.MobileAppService.Models
 {
 	public class EventOccurrence
 	{

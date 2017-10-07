@@ -13,4 +13,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\test.cs" />
+    <Compile Remove="Controllers\ItemController.cs" />
+  </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 using Swashbuckle.AspNetCore.Swagger;
 
-using HIP.Models;
+using HIP.MobileAppService.Models;
 
 namespace HIP.MobileAppService
 {
