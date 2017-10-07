@@ -35,9 +35,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\EventBlackout.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\EventOccurrence.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\RecurringEventOccurrence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CalendarService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventViewModel.cs" />
   </ItemGroup>
