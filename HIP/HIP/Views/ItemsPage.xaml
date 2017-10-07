@@ -12,6 +12,7 @@
 							<StackLayout Padding="10">
 								<Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                                 <Label Text="{Binding Date}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
+                                <Button Text="Add to Calendar" Command="{Binding AddToCalendar}" />
 							</StackLayout>
 						</ViewCell>
 					</DataTemplate>
