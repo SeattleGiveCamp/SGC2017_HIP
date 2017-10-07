@@ -1,11 +1,18 @@
 ﻿@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login");
+    }
+
+    WebSecurity.RequireAuthenticatedUser();
+
     Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "About";
+    Page.Title = "Export Data";
 }
 
 <hgroup class="title">
     <h1>@Page.Title.</h1>
-    <h2>Your app description page.</h2>
+    <h2>Download timecard data in CSV format.</h2>
 </hgroup>
 
 <article>

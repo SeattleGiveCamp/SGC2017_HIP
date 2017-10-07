@@ -31,20 +31,11 @@
     // If this is a POST request, validate and process data
     if (IsPost) {
         AntiForgery.Validate();
-        // is this an external login request?
-        string provider = Request.Form["provider"];
-        if (!provider.IsEmpty()) {
-            OAuthWebSecurity.RequestAuthentication(provider, Href("~/Account/RegisterService", new { returnUrl }));
-            return;
-        } else if (Validation.IsValid()) {
+
+        if (Validation.IsValid()) {
             email = Request.Form["email"];
             password = Request.Form["password"];
             rememberMe = Request.Form["rememberMe"].AsBool();
-
-            if (WebSecurity.UserExists(email) && WebSecurity.GetPasswordFailuresSinceLastSuccess(email) > 4 && WebSecurity.GetLastPasswordFailureDate(email).AddSeconds(60) > DateTime.UtcNow) {
-                Response.Redirect("~/Account/AccountLockedOut");
-                return;
-            }
 
             // Attempt to log in using provided credentials
             if (WebSecurity.Login(email, password, rememberMe)) {
@@ -92,13 +83,4 @@
             <input type="submit" value="Log in" />
         </fieldset>
     </form>
-    <p>
-        <a href="~/Account/Register">Don't have a Account?</a>
-        <a href="~/Account/ForgotPassword">Did you forget your password?</a>
-    </p>
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @RenderPage("~/Account/_ExternalLoginsList.cshtml")
 </section>
