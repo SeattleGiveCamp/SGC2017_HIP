@@ -3,73 +3,67 @@
     <ContentPage.BindingContext>
         <vm:SignInViewModel />
     </ContentPage.BindingContext>
-	<ContentPage.Content>
-
+    <ContentPage.Content>
         <Grid>
-            
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                        <Image VerticalOptions="Center" HeightRequest="64">
-                            <Image.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="iOS" Value="xamarin_logo.png" />
-                                    <On Platform="Android" Value="xamarin_logo.png" />
-                                    <On Platform="UWP" Value="Assets\xamarin_logo.png" />
-                                </OnPlatform>
-                            </Image.Source>
-                        </Image>
-                    </ContentView>
+            <StackLayout Grid.Row="0" Margin="0,20,0,0" Orientation="Vertical" HorizontalOptions="Center" Spacing="30">
+                <Label FontSize="Large" FontAttributes="Bold" Text="Volunteer Hours Worked" HorizontalTextAlignment="Center" />
+                
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                    <Button 
+                        Margin="20,30,20,30"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        FontSize="Large" FontAttributes="Bold"
+                        Text=" ➖ " TextColor="{StaticResource Primary}"
+                        BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2"
+                        Command="{Binding LessCommand}"/>
+                    <Label FontSize="30" Text="{Binding DisplayHours}" WidthRequest="80" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    <Button 
+                        Margin="20,30,20,30"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        FontSize="Large" FontAttributes="Bold"
+                        Text=" ➕ " TextColor="{StaticResource Primary}"
+                        BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2"
+                        Command="{Binding MoreCommand}"/>
                 </StackLayout>
             </StackLayout>
+            
             <ScrollView Grid.Row="1">
-                <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                    <Label FontSize="22">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Hunger Intervention Program" FontAttributes="Bold" FontSize="22" />
-                                    <Span Text=" " />
-                                    <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="This app is written in C# and native APIs using the" />
-                                    <Span Text=" " />
-                                    <Span Text="Xamarin Platform" FontAttributes="Bold" />
-                                    <Span Text="." />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="It shares code with its" />
-                                    <Span Text=" " />
-                                    <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
-                                    <Span Text=" " />
-                                    <Span Text="versions." />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="10,20,10,20" Spacing="20">
+                    <Label FontSize="Medium" Text="List other volunteers who worked with you if they are not recording their hours separately" />
+                    <StackLayout Orientation="Horizontal" Spacing="50">
+                        <Label FontSize="Large" FontAttributes="Bold" Text="Additional Volunteers" VerticalTextAlignment="Center" />
+                        <Button
+                            Text="Add"
+                            Image="ic_person_add.png" 
+                            BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2"
+                            Command="{Binding SendCommand}" />
+                    </StackLayout>
+
+                    <ListView x:Name="AdditionalVolunteersListView" ItemsSource="{Binding AdditionalVolunteers}" VerticalOptions="FillAndExpand" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding DisplayName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="Medium" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </ScrollView>
-            <Button Grid.Row="2" Margin="0,10,0,0" Text="Send" Command="{Binding SendCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-        </Grid>
 
-	</ContentPage.Content>
+            <Button Grid.Row="2"
+                Margin="50,40,50,40"
+                Text="Send"
+                BackgroundColor="{StaticResource Primary}" TextColor="White"
+                Command="{Binding SendCommand}" />
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
