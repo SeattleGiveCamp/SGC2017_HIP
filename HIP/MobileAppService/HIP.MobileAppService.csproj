@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Compile Remove="Models\test.cs" />
+    <Compile Remove="Models\EventType.cs" />
   </ItemGroup>
 
   <ItemGroup>
