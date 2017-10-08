@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HIP.AdditionalVolunteerPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HIP.AdditionalVolunteerPage" Title="Add Volunteer">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Entry x:Name="FirstNameView" Text="{Binding FirstName}" Placeholder="First Name" FontSize="Medium" />
+            <Entry x:Name="LastNameView" Text="{Binding LastName}" Placeholder="Last Name" FontSize="Medium" />
+            <Entry x:Name="EmailNameView" Text="{Binding Email}" Placeholder="Email" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal" Spacing="20"> 
+                <Label Text="Is child" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Switch x:Name="IsChildView" IsToggled="{Binding Path=IsChild}" Toggled="Handle_Toggled" VerticalOptions="Center"/>
+                </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
