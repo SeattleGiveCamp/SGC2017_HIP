@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HIP.MobileAppService.Models;
 using System.Linq;
+using HIP.MobileAppService.Models.ClientModels;
 
 namespace HIP.MobileAppService.Controllers
 {
@@ -10,37 +11,38 @@ namespace HIP.MobileAppService.Controllers
         public EventMapper()
         {}
 
-		public List<DisplayEvent> BuildEventsToDisplay(DateTime startDate, DateTime endDate, IEnumerable<EventModel> storedEvents)
+		public List<Event> BuildEventsToDisplay(DateTime startDate, DateTime endDate, IEnumerable<EventModel> storedEvents)
         {
-            List<DisplayEvent> eventsToDisplay = new List<DisplayEvent>();
+            List<Event> eventsToDisplay = new List<Event>();
 
 			foreach (EventModel storedEvent in storedEvents)
 			{
-                List<DisplayEvent> singleEvents = GetSingleOccurrences(storedEvent, startDate, endDate);
+                List<Event> singleEvents = GetSingleOccurrences(storedEvent, startDate, endDate);
                 eventsToDisplay.AddRange(singleEvents);
 
-                List<DisplayEvent> recurringEvents = GetRecurringOccurrences(storedEvent, startDate, endDate);
+                List<Event> recurringEvents = GetRecurringOccurrences(storedEvent, startDate, endDate);
 				eventsToDisplay.AddRange(recurringEvents);
    			}
-			return eventsToDisplay.OrderBy(o => o.StartTime).ToList();
+			return eventsToDisplay.OrderBy(o => o.Start).ToList();
 		}
 
-		private List<DisplayEvent> GetSingleOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
+		private List<Event> GetSingleOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
 		{
-			List<DisplayEvent> singleOccurrences = new List<DisplayEvent>();
+			List<Event> singleOccurrences = new List<Event>();
             foreach (EventOccurrence occurrence in storedEvent.Occurrences)
             {
                 if (datesOverlap(occurrence, startDate, endDate) && !IsBlackedOut(occurrence, storedEvent.Blackouts))
                 {
-                    singleOccurrences.Add(new DisplayEvent());  //TODO: build event
-                }
+					Event newEvent = ConvertEvent(storedEvent, occurrence.Start, occurrence.End);
+					singleOccurrences.Add(new Event());
+				}
             }
 			return singleOccurrences;
 		}
 
-        private List<DisplayEvent> GetRecurringOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
+        private List<Event> GetRecurringOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
 		{
-            List<DisplayEvent> recurringOccurrences = new List<DisplayEvent>();
+            List<Event> recurringOccurrences = new List<Event>();
             for (DateTime day = startDate.Date; day.Date <= endDate.Date; day = day.AddDays(1))
             {
 				foreach (RecurringEventOccurrence occurrence in storedEvent.RecurringOccurrences)
@@ -51,7 +53,8 @@ namespace HIP.MobileAppService.Controllers
                         DateTime eventEnd = day.Add(occurrence.EndTime);
                         if (!IsBlackedOut(eventStart, eventEnd, storedEvent.Blackouts))
                         {
-							recurringOccurrences.Add(new DisplayEvent());  //TODO: build event
+							Event newEvent = ConvertEvent(storedEvent, eventStart, eventEnd);
+							recurringOccurrences.Add(newEvent);
 						}
 					}
 				}
@@ -93,10 +96,11 @@ namespace HIP.MobileAppService.Controllers
 			return false;
 		}
 
-		public class DisplayEvent 
-        {    
-            public DateTime StartTime { get; }
-        }
+		private Event ConvertEvent(EventModel storedEvent, DateTime startTime, DateTime endTime)
+		{
+			return new Event(storedEvent.Id, storedEvent.Name, storedEvent.Description, startTime, endTime);
+		}
+
 	}
 
 }
