@@ -43,7 +43,7 @@
                         />
                     </StackLayout>
 
-                    <ListView x:Name="AdditionalVolunteersListView" ItemsSource="{Binding AdditionalVolunteers}" VerticalOptions="FillAndExpand" >
+                    <ListView x:Name="AdditionalVolunteersListView" ItemsSource="{Binding AdditionalVolunteers}" VerticalOptions="FillAndExpand" RowHeight="50" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

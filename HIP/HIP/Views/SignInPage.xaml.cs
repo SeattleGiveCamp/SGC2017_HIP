@@ -16,7 +16,14 @@ namespace HIP
         {
             InitializeComponent();
             BindingContext = viewModel = new SignInViewModel(Navigation);
+            viewModel.AdditionalVolunteers.CollectionChanged += (sender, e) => UpdateListViewHeight();
+		}
 
+        private void UpdateListViewHeight()
+        {
+            ListView listView = AdditionalVolunteersListView;
+            int requestedHeight = listView.RowHeight * viewModel.AdditionalVolunteers.Count;
+            listView.HeightRequest = requestedHeight;
 		}
 
         private SignInViewModel viewModel;

@@ -16,26 +16,17 @@ namespace HIP
 			Title = "Sign In";
 
             AdditionalVolunteers = new ObservableCollection<VolunteerListItemViewModel>();
+            AdditionalVolunteers.Clear();
 
             SendCommand = new Command(() => Send());
             LessCommand = new Command(() => AddTime(-0.5));
 			MoreCommand = new Command(() => AddTime(0.5));
-
-            UserModel user1 = new UserModel("foo@bar.com", "Hello", "World");
-			UserModel user2 = new UserModel("noname@nemo.com");
-			UserModel user3 = new UserModel("kid@minor.com");
-            user3.IsMinor = true;
-
-            AdditionalVolunteers.Clear();
-            AdditionalVolunteers.Add(new VolunteerListItemViewModel(user1));
-			AdditionalVolunteers.Add(new VolunteerListItemViewModel(user2));
-			AdditionalVolunteers.Add(new VolunteerListItemViewModel(user3));
-		}
+   		}
 
         private void Send()
         {
             UserModel[] additionalVolunteers = AdditionalVolunteers.Select(m => m.Model).ToArray();
-            //TODO send to cloud code
+            // TODO: Submit the list of volunteers to the API.
             Navigation.PopAsync();
         }
 
@@ -44,7 +35,7 @@ namespace HIP
             AdditionalVolunteers.Add(new VolunteerListItemViewModel(user));
         }
 
-        private double Hours = 8.5;
+        private double Hours = 1.0; // TODO: Get duration from the actual event.
 		public string DisplayHours
 		{
 			get
