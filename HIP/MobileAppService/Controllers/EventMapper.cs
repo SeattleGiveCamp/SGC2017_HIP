@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HIP.MobileAppService.Models;
+using System.Linq;
 
 namespace HIP.MobileAppService.Controllers
 {
@@ -21,9 +22,7 @@ namespace HIP.MobileAppService.Controllers
                 List<DisplayEvent> recurringEvents = GetRecurringOccurrences(storedEvent, startDate, endDate);
 				eventsToDisplay.AddRange(recurringEvents);
    			}
-            //TODO: sort
-
-			return eventsToDisplay;
+			return eventsToDisplay.OrderBy(o => o.StartTime).ToList();
 		}
 
 		private List<DisplayEvent> GetSingleOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
@@ -94,7 +93,10 @@ namespace HIP.MobileAppService.Controllers
 			return false;
 		}
 
-		public class DisplayEvent { }
+		public class DisplayEvent 
+        {    
+            public DateTime StartTime { get; }
+        }
 	}
 
 }
