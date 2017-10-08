@@ -39,6 +39,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CalendarService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ProgramListItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage.xaml.cs">
+      <DependentUpon>AdditionalVolunteerPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">
@@ -54,6 +60,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
