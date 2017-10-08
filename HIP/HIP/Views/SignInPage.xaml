@@ -13,20 +13,18 @@
                 
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
                     <Button 
-                        Margin="20,0,20,0"
                         WidthRequest="50"
                         HeightRequest="50"
                         FontSize="Large" FontAttributes="Bold"
-                        Text=" ➖ " TextColor="{StaticResource Primary}"
+                        Text="➖" TextColor="{StaticResource Primary}"
                         BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2"
                         Command="{Binding LessCommand}"/>
-                    <Label FontSize="30" Text="{Binding DisplayHours}" WidthRequest="80" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    <Label FontSize="30" Text="{Binding DisplayHours}" WidthRequest="70" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                     <Button 
-                        Margin="20,0,20,0"
                         WidthRequest="50"
                         HeightRequest="50"
                         FontSize="Large" FontAttributes="Bold"
-                        Text=" ➕ " TextColor="{StaticResource Primary}"
+                        Text="➕" TextColor="{StaticResource Primary}"
                         BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2"
                         Command="{Binding MoreCommand}"/>
                 </StackLayout>
@@ -34,7 +32,7 @@
             
             <ScrollView Grid.Row="1">
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="10,20,10,20" Spacing="20">
-                    <Label FontSize="Medium" Text="List other volunteers who worked with you if they are not recording their hours separately" />
+                    <Label FontSize="Medium" Text="List others who volunteered with you if they are not recording hours separately." />
                     <StackLayout Orientation="Horizontal" Spacing="50">
                         <Label FontSize="Large" FontAttributes="Bold" Text="Additional Volunteers" VerticalTextAlignment="Center" />
                         <Button
