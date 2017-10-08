@@ -26,6 +26,13 @@ namespace HIP
             listView.HeightRequest = requestedHeight;
 		}
 
+		public void RemoveAdditionalVolunteer(object sender, EventArgs e)
+		{
+			var mi = ((MenuItem)sender);
+            var vlivm = (VolunteerListItemViewModel)mi.CommandParameter;
+            viewModel.AdditionalVolunteers.Remove(vlivm);
+		}
+
         private SignInViewModel viewModel;
 
     }

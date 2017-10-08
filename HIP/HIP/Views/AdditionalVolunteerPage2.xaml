@@ -9,7 +9,7 @@
             <Entry x:Name="LastNameView" Text="{Binding LastName}" Placeholder="Last Name" FontSize="Medium" />
             <Entry x:Name="EmailNameView" Text="{Binding Email}" Placeholder="Email" FontSize="Medium" />
             <StackLayout Orientation="Horizontal" Spacing="20"> 
-                <Label Text="Is child" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Label Text="Child under the age of 13?" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Start"/>
                 <Switch x:Name="IsChildView" IsToggled="{Binding Path=IsChild}" Toggled="Handle_Toggled" VerticalOptions="Center"/>
                 </StackLayout>
         </StackLayout>
