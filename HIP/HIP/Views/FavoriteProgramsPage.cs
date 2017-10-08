@@ -23,13 +23,16 @@ namespace HIP.Views
 
         public FavoriteProgramsPage()
 		{
-            knownFavorites = new List<string>();
-            loadElements();
-        }
+            if (Application.Current.Properties.ContainsKey("favorites"))
+            {
+                var favsWithNewlines = Application.Current.Properties["favorites"] as string;
+                knownFavorites = favsWithNewlines.Split('\n').ToList();
+            }
+            else
+            {
+                knownFavorites = new List<string>();
+            }
 
-        public FavoriteProgramsPage(List<string> knownFavorites)
-        {
-            this.knownFavorites = knownFavorites;
             loadElements();
         }
 
@@ -44,6 +47,7 @@ namespace HIP.Views
         }
 
 
+        //TODO: Remove this when hooked up
         void populateFakeElements()
         {
             favoriteList = new List<favorite>();
@@ -158,7 +162,9 @@ namespace HIP.Views
                     newFavs.Add(fav.programType.Name);
                 }
             }
-            //TODO: Save newFavs to phone storage
+            var joinedString = string.Join("\n", newFavs.ToArray());
+            Application.Current.Properties["favorites"] = joinedString;
+            Application.Current.SavePropertiesAsync();
 
             //TODO: How do we force close these pages and make the Upcoming Program Page the primary??
         }
