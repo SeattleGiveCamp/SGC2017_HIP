@@ -28,6 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ClientModels\" />
+    <Folder Include="Models\Repositories\" />
   </ItemGroup>
 </Project>
