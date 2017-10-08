@@ -16,7 +16,6 @@ namespace HIP.MobileAppService.Models
         public List<RecurringEventOccurrence> RecurringOccurrences { get; }
         public List<EventBlackout> Blackouts { get; }
 
-        //TODO remove, just to mock
         public EventModel()
         {
         }

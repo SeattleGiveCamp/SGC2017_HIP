@@ -49,6 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage2.xaml.cs">
       <DependentUpon>AdditionalVolunteerPage2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventCheckInModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">

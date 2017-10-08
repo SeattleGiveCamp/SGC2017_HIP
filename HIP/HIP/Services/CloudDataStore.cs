@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using HIP.Models;
+using HIP.MobileAppService.Models;
+
 namespace HIP
 {
     public class CloudDataStore : IDataStore<Event>
@@ -26,7 +28,8 @@ namespace HIP
         {
             if (forceRefresh && CrossConnectivity.Current.IsConnected)
             {
-                var json = await client.GetStringAsync($"api/item");
+                string arg = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd");
+                var json = await client.GetStringAsync($"api/Event/getByEndDate/" + arg);
                 items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Event>>(json));
             }
 
@@ -55,6 +58,18 @@ namespace HIP
 
             return response.IsSuccessStatusCode;
         }
+
+		public async Task<bool> RegisterUserAsync(UserModel user)
+		{
+			if (user == null || !CrossConnectivity.Current.IsConnected)
+				return false;
+
+			var serializedItem = JsonConvert.SerializeObject(user);
+
+			var response = await client.PostAsync($"api/User", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+
+			return response.IsSuccessStatusCode;
+		}
 
         public async Task<bool> UpdateItemAsync(Event item)
         {

@@ -10,8 +10,8 @@ namespace HIP
 {
     public partial class App : Application
     {
-        public static bool UseMockDataStore = true;
-        public static string BackendUrl = "https://localhost:5000";
+        public static bool UseMockDataStore = false;
+        public static string BackendUrl = "http://hipmobileappservice.azurewebsites.net";
 
         public App()
         {
