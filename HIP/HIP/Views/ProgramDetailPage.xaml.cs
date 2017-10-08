@@ -14,7 +14,7 @@ namespace HIP
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = new ProgramDetailViewModel(program);
+            BindingContext = this.viewModel = new ProgramDetailViewModel(viewModel.Item);
         }
 
         async void AddToCalendar_Clicked(object sender, System.EventArgs e)
