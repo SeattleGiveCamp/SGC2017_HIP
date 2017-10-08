@@ -34,7 +34,7 @@ namespace HIP.MobileAppService.Controllers
                 if (datesOverlap(occurrence, startDate, endDate) && !IsBlackedOut(occurrence, storedEvent.Blackouts))
                 {
 					Event newEvent = ConvertEvent(storedEvent, occurrence.Start, occurrence.End);
-					singleOccurrences.Add(new Event());
+					singleOccurrences.Add(newEvent);
 				}
             }
 			return singleOccurrences;
@@ -64,7 +64,7 @@ namespace HIP.MobileAppService.Controllers
 
 		private Boolean datesOverlap(DateTime startDate1, DateTime endDate1, DateTime startDate2, DateTime endDate2)
 		{
-			return startDate1 <= endDate2 || endDate1 >= startDate2;
+            return startDate1 < endDate2 && startDate2 < endDate1;
 		}
 
 		private Boolean datesOverlap(EventOccurrence occ1, DateTime startDate, DateTime endDate)
