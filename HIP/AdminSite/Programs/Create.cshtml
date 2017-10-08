@@ -30,15 +30,11 @@
             </li>
             <li class="type">
                 <label for="type">Program Type</label>
-                <select id="description" name="description" form="create">
+                <select id="type" name="description" form="create">
                     <option value="t1">Type 1</option>
                     <option value="t2">Type 2</option>
                     <option value="t3">Type 3</option>
                 </select>
-            </li>
-            <li class="one-time">
-                <label for="one-time">One-Time Event</label>
-                <input type="checkbox" id="one-time" name="one-time" value="true" />
             </li>
             <li class="start-time">
                 <label for="start-time">Start Time</label>
@@ -52,6 +48,24 @@
                 <label for="date">Date</label>
                 <input type="date" id="date" name="date" />
             </li>
+            <li class="select-days">
+                <h3>(Optional) Select Recurring Days</h3>
+                <label for="monday">Monday</label>
+                <input type="checkbox" id="monday" name="monday" value="false" />
+                <label for="tuesday">Tuesday</label>
+                <input type="checkbox" id="tuesday" name="tuesday" value="false" />
+                <label for="wednesday">Wednesday</label>
+                <input type="checkbox" id="wednesday" name="wednesday" value="false" />
+                <label for="thursday">Thursday</label>
+                <input type="checkbox" id="thursday" name="thursday" value="false" />
+                <label for="friday">Friday</label>
+                <input type="checkbox" id="friday" name="friday" value="false" />
+                <label for="saturday">Saturday</label>
+                <input type="checkbox" id="saturday" name="saturday" value="false" />
+                <label for="sunday">Sunday</label>
+                <input type="checkbox" id="sunday" name="sunday" value="false" />
+
+            </li>
         </ol>
         <input type="submit" value="Create" />
     </fieldset>
@@ -61,26 +75,74 @@
 // Attach a submit handler to the form
 $( "#create" ).submit(function( event ) {
 
+    var url = "http://hipmobileappservice.azurewebsites.net/api/Event";
+
     // Stop form from submitting normally
     event.preventDefault();
 
     var $form = $(this);
     var $name = $form.find("input[name='name']").val();
-    var $description = $form.find("input[name='$description']").val();
+    var $description = $('textarea#description').val();
+    var $starttime = $form.find("input[name='start-time']").val();
+    var $endtime = $form.find("input[name='end-time']").val();
     var $date = $form.find("input[name='date']").val();
-    var $date = $form.find("input[name='date']").val();
-    var $date = $form.find("input[name='date']").val();
+    var $type = $("#type :selected").text();
 
-    var $date = $form.find("input[name='date']").val();
+    var isoStart = (new Date($date.toString() + " " + $starttime.toString())).toISOString();
+    var isoEnd = (new Date($date.toString() + " " + $endtime.toString())).toISOString();
 
-  // Get some values from elements on the page:
-  //var $form = $( this ),
-    //term = $form.find( "input[name='s']" ).val(),
-    //url = $form.attr( "action" );
+    var recurringOccurrences = [];
 
-  // Send the data using post
-    //var posting = $.post( url, { s: term } );
-    alert($date);
+    if ($('#sunday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 0 });
+    }
+    if ($('#monday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 1 });
+    }
+    if ($('#tuesday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 2 });
+    }
+    if ($('#wednesday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 3 });
+    }
+    if ($('#thursday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 4 });
+    }
+    if ($('#friday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 5 });
+    }
+    if ($('#saturday').is(":checked")) {
+        recurringOccurrences.push({ recurrenceStart: isoStart, recurrenceEnd: isoEnd, recurringDay: 6 });
+    }
+
+    var occurrences = [];
+
+    if (recurringOccurrences.length == 0)
+    {
+        occurrences.push({ start: isoStart, end: isoEnd });
+    }
+
+    var $createData = {
+        id: "",
+        name: $name,
+        description: $description,
+        type: {
+            id: null,
+            name: $type
+        },
+        occurences: occurrences,
+        recurringOccurrences: recurringOccurrences,
+        blackouts: null
+    };
+
+    // Send the data using post
+    var posting = $.post(url, $createData);
+
+    // Put the results in a div
+    posting.done(function (data) {
+        alert("Completed: " + data);
+    });
+
 
 });
 </script>
