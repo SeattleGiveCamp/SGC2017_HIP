@@ -10,18 +10,19 @@ namespace HIP.MobileAppService.Models
 {
 	public class EventCheckInRepository : IEventCheckInRepository
 	{
-		public EventCheckInModel Get(string id)
-		{
-			return null;
-		}
 
 		public IEnumerable<EventCheckInModel> GetAll()
 		{
-			return null;
+            return new HIPContext().EventCheckIns.ToList();
 		}
 
-		public void Add(EventCheckInModel eventModel)
+		public void Add(EventCheckInModel checkIn)
 		{
+			using (var db = new HIPContext())
+			{			
+                db.EventCheckIns.Add(checkIn);
+				db.SaveChanges();
+			}
 		}
 	}
 }

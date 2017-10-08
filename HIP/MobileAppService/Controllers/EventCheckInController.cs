@@ -35,9 +35,9 @@ namespace HIP.MobileAppService.Controllers
 				EventCheckInRepository.Add(item);
 
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-				return BadRequest("Error while creating");
+                return BadRequest("Error while creating: "+e.Message);
 			}
 			return Ok(item);
 		}
