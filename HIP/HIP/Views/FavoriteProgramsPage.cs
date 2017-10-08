@@ -50,11 +50,22 @@ namespace HIP.Views
         //TODO: Remove this when hooked up
         void populateFakeElements()
         {
+            var names = new string[] {
+                "HIP Pack Packing Party",
+                "HIP Pack Final Assembly",
+                "HIP Pack Repackaging",
+                "Senior Meals Server",
+                "Meal Prep",
+                "Summer Meals Server",
+                "Snack Server",
+                "Office Work",
+                "Cooking Matters" };
+
             favoriteList = new List<favorite>();
-            for (int i = 0; i < 10; i++)
+            foreach (string name in names)
             {
                 var fav = new favorite();
-                fav.programType = new ProgramType("what: " + i.ToString());
+                fav.programType = new ProgramType(name);
                 favoriteList.Add(fav);
             }
         }
