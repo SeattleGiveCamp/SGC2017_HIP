@@ -5,7 +5,7 @@ using HIP.Models;
 using HIP.Services;
 using Xamarin.Forms;
 
-namespace HIP.ViewModels
+namespace HIP
 {
 	public class ProgramListItemViewModel
 	{

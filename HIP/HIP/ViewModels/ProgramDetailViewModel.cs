@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using HIP.Models;
-using HIP.ViewModels;
 using System.Collections.Generic;
 using Plugin.Calendars.Abstractions;
 using Plugin.Calendars;

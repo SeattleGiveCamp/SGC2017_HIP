@@ -2,7 +2,6 @@
 
 using Xamarin.Forms;
 using HIP.Models;
-using HIP.ViewModels;
 using HIP.Services;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 

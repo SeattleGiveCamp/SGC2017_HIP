@@ -47,6 +47,7 @@
       <DependentUpon>AdditionalVolunteerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AdditinalVolunteerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SignInViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">

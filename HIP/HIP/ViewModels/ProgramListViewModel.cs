@@ -7,7 +7,6 @@ using Xamarin.Forms;
 using HIP.Models;
 using System.Windows.Input;
 // using FormsToolkit;
-using HIP.ViewModels;
 
 namespace HIP
 {

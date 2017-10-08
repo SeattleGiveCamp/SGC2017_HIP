@@ -1,5 +1,4 @@
-﻿using HIP.Views;
-using System;
+﻿using System;
 
 using Xamarin.Forms;
 
@@ -37,7 +36,7 @@ namespace HIP
                         Icon = "tab_about.png"
                     };
 
-                    break;
+					break;
 
                 default:
                     loginPage = new LoginPage()
@@ -54,10 +53,11 @@ namespace HIP
                     {
                         Title = aboutTitle
                     };
-                    break;
+
+					break;
             }
 
-            Children.Add(loginPage);
+			Children.Add(loginPage);
             Children.Add(upcomingPage);
             //Children.Add(aboutPage);
 

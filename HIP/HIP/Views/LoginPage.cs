@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace HIP.Views
+namespace HIP
 {
 	public class LoginPage : ContentPage
 	{

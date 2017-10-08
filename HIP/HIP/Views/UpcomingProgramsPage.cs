@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using HIP.Models;
-using HIP.ViewModels;
-using HIP.Views;
 
 namespace HIP
 {
