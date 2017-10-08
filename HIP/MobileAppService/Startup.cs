@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using HIP.MobileAppService.Models.Repositories;
 
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -36,6 +37,7 @@ namespace HIP.MobileAppService
             services.AddSingleton<IItemRepository, ItemRepository>();
 			services.AddSingleton<IEventRepository, EventRepository>();
 			services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IEventCheckInRepository, EventCheckInRepository>();
 
 			services.AddSwaggerGen(c =>
             {
