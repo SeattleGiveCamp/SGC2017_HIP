@@ -26,7 +26,8 @@ namespace HIP
         {
             if (forceRefresh && CrossConnectivity.Current.IsConnected)
             {
-                var json = await client.GetStringAsync($"api/item");
+                string arg = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd");
+                var json = await client.GetStringAsync($"api/Event/getByEndDate/" + arg);
                 items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Event>>(json));
             }
 
