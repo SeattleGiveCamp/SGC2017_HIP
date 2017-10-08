@@ -3,7 +3,8 @@ namespace HIP.MobileAppService.Models
 {
 	public class RecurringEventOccurrence
 	{
-		public DateTime RecurrenceStart { get; set; }
+        public int Id { get; set; }
+        public DateTime RecurrenceStart { get; set; }
 		public DateTime RecurrenceEnd { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }

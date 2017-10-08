@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace HIP.MobileAppService.Models
 {
     public class UserModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Key]
         public string Email { get; set; }
 
 		public UserModel()
