@@ -35,8 +35,9 @@ namespace HIP.MobileAppService
             services.AddMvc();
             services.AddSingleton<IItemRepository, ItemRepository>();
 			services.AddSingleton<IEventRepository, EventRepository>();
+			services.AddSingleton<IUserRepository, UserRepository>();
 
-            services.AddSwaggerGen(c =>
+			services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
