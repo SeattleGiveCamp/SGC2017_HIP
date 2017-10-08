@@ -10,6 +10,9 @@ namespace HIP.MobileAppService.Models
 		public string Email { get; set; }
 		public string ParentEmail { get; set; }
 
+        public UserModel()
+        {}
+
 		public UserModel(string parentEemail)
 		{
 			FirstName = "";
@@ -25,5 +28,6 @@ namespace HIP.MobileAppService.Models
 			Email = email;
 			ParentEmail = "";
 		}
+
 	}
 }
