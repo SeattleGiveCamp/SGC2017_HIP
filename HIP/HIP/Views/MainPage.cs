@@ -7,8 +7,9 @@ namespace HIP
 {
     public class MainPage : TabbedPage
     {
-        //The goal should be to replace this MainPage. 
-        //But for the start, let's use this as a simple launch screen to get to our different views
+        // *****************************************************************************************************
+        //NOTE: THIS PAGE IS NOT UTILIZED. SEE App.xaml.cs FOR LOGIC DETERMINING WHICH PAGE TO INITIALLY DISPLAY
+        // *****************************************************************************************************
         public MainPage()
         {
             Page loginPage, upcomingPage, aboutPage = null;

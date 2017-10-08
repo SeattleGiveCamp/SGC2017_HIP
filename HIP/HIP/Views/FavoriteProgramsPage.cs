@@ -141,7 +141,7 @@ namespace HIP.Views
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            doneButton.Clicked += OnDoneButtonClicked;
+            doneButton.Clicked += OnDoneButtonClickedAsync;
             layout.Children.Add(doneButton);
 
 
@@ -151,7 +151,7 @@ namespace HIP.Views
 
 
 
-        void OnDoneButtonClicked(object sender, EventArgs e)
+        async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             var newFavs = new List<string>();
 
@@ -164,9 +164,12 @@ namespace HIP.Views
             }
             var joinedString = string.Join("\n", newFavs.ToArray());
             Application.Current.Properties["favorites"] = joinedString;
-            Application.Current.SavePropertiesAsync();
+            await Application.Current.SavePropertiesAsync();
 
-            //TODO: How do we force close these pages and make the Upcoming Program Page the primary??
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+                App.Current.MainPage = new UpcomingProgramsPage();
+            else
+                App.Current.MainPage = new NavigationPage(new UpcomingProgramsPage());
         }
 
 
