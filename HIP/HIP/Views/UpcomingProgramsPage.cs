@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using HIP.Models;
+
 namespace HIP
 {
     public partial class UpcomingProgramsPage : ContentPage
@@ -23,7 +24,7 @@ namespace HIP
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ProgramDetailPage(new ProgramDetailViewModel(item)));
+            await Navigation.PushAsync(new ProgramDetailPage(item));
 
             // Manually deselect item
             ProgramsListView.SelectedItem = null;
