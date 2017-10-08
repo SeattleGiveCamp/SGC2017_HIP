@@ -93,5 +93,10 @@ namespace HIP
         {
             throw new NotImplementedException();
         }
+
+        Task<bool> IDataStore<Event>.CheckInUserOnEventAsync(EventCheckInModel item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

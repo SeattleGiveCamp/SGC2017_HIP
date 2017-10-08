@@ -23,7 +23,7 @@ namespace HIP
             Item = item;
 			Name = item.Name;
 			Description = item.Description;
-			Date = DateTime.Now.ToString();
+            Date = item.Start.ToString();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 

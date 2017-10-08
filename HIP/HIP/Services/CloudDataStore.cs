@@ -94,5 +94,17 @@ namespace HIP
 
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<bool> CheckInUserOnEventAsync(EventCheckInModel user)
+        {
+			if (user == null || !CrossConnectivity.Current.IsConnected)
+				return false;
+
+			var serializedItem = JsonConvert.SerializeObject(user);
+
+			var response = await client.PostAsync($"api/EventCheckIn", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+
+			return response.IsSuccessStatusCode;
+        }
     }
 }

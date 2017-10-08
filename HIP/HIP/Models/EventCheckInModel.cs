@@ -3,7 +3,7 @@ namespace HIP.Models
 {
 	public class EventCheckInModel
 	{
-		public String Id { get; set; }
+		//public String Id { get; set; }
 		public String UserEmail { get; set; }
 		public String ParentUserEmail { get; set; }
 		public String EventId { get; set; }
@@ -13,9 +13,9 @@ namespace HIP.Models
 		public EventCheckInModel()
 		{ }
 
-		public EventCheckInModel(String id, String userEmail, String parentUserEmail, String eventId, Double hourCount, DateTime checkinDate)
+		public EventCheckInModel(String userEmail, String parentUserEmail, String eventId, Double hourCount, DateTime checkinDate)
 		{
-			Id = id;
+			//Id = id;
 			UserEmail = userEmail;
 			ParentUserEmail = parentUserEmail;
 			EventId = eventId;

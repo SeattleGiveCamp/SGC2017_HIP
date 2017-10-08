@@ -14,7 +14,7 @@ namespace HIP
 			Event = model;
             Name = model.Name;
             Description = model.Description;
-            Date = DateTime.Now.ToString();
+            Date = model.Start.ToString();
 		}
 
         public string Name { get; set; }
