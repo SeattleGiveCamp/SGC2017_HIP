@@ -11,8 +11,8 @@ using System;
 namespace HIP.MobileAppService.Migrations
 {
     [DbContext(typeof(HIPContext))]
-    [Migration("20171008175713_stage1")]
-    partial class stage1
+    [Migration("20171008213933_changetoprogram")]
+    partial class changetoprogram
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,11 +70,9 @@ namespace HIP.MobileAppService.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("TypeId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TypeId");
+                    b.HasIndex("Name");
 
                     b.ToTable("Events");
                 });
@@ -85,6 +83,8 @@ namespace HIP.MobileAppService.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("End");
+
+                    b.Property<string>("EventId");
 
                     b.Property<string>("EventModelId");
 
@@ -97,16 +97,18 @@ namespace HIP.MobileAppService.Migrations
                     b.ToTable("EventOccurences");
                 });
 
-            modelBuilder.Entity("HIP.MobileAppService.Models.EventType", b =>
+            modelBuilder.Entity("HIP.MobileAppService.Models.ProgramType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Name")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("name");
+                    b.Property<string>("EventModelId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
-                    b.ToTable("EventTypes");
+                    b.HasIndex("EventModelId");
+
+                    b.ToTable("ProgramTypes");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.RecurringEventOccurrence", b =>
@@ -142,6 +144,8 @@ namespace HIP.MobileAppService.Migrations
 
                     b.Property<string>("LastName");
 
+                    b.Property<string>("ParentEmail");
+
                     b.HasKey("Email");
 
                     b.ToTable("Users");
@@ -156,15 +160,22 @@ namespace HIP.MobileAppService.Migrations
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventModel", b =>
                 {
-                    b.HasOne("HIP.MobileAppService.Models.EventType", "Type")
+                    b.HasOne("HIP.MobileAppService.Models.ProgramType", "Type")
                         .WithMany()
-                        .HasForeignKey("TypeId");
+                        .HasForeignKey("Name");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventOccurrence", b =>
                 {
                     b.HasOne("HIP.MobileAppService.Models.EventModel")
                         .WithMany("Occurrences")
+                        .HasForeignKey("EventModelId");
+                });
+
+            modelBuilder.Entity("HIP.MobileAppService.Models.ProgramType", b =>
+                {
+                    b.HasOne("HIP.MobileAppService.Models.EventModel")
+                        .WithMany("ProgramCategories")
                         .HasForeignKey("EventModelId");
                 });
 
