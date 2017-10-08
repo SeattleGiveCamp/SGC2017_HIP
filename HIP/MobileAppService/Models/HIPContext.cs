@@ -10,6 +10,11 @@ namespace HIP.MobileAppService.Models
     {
         public DbSet<UserModel> Users { get; set; }
         public DbSet<EventModel> Events { get; set; }
+        public DbSet<EventOccurrence> EventOccurences { get; set; }
+        public DbSet<RecurringEventOccurrence> RecurringEventOccurrences { get; set; }
+        public DbSet<EventBlackout> EventBlackouts { get; set; }
+        public DbSet<EventCheckInModel> EventCheckIns { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

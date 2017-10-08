@@ -13,45 +13,52 @@ namespace HIP.MobileAppService.Models
 
 		public UserRepository()
 		{
-			Add(new UserModel { Email = "test@test1.com", FirstName = "Firs 1", LastName = "Last 1" });
-			Add(new UserModel { Email = "test@test2.com", FirstName = "Firs 2", LastName = "Last 2" });
-			Add(new UserModel { Email = "test@test3.com", FirstName = "Firs 3", LastName = "Last 3" });
-		}
+        }
 
 		public UserModel Get(string id)
 		{
-			return userModels[id];
-		}
+            using (var db = new HIPContext())
+            {
+                var users = db.Users
+                    .Where(b => b.Email == id)
+                    .ToList();
+
+                return users.ElementAt(0);
+            }
+        }
 
 		public IEnumerable<UserModel> GetAll()
 		{
-			return userModels.Values;
-		}
+            using (var db = new HIPContext())
+            {
+                var users = db.Users
+                    .ToList();
+
+                return users;
+            }
+        }
 
 		public void Add(UserModel user)
 		{
-			userModels[user.Email] = user;
-		}
+            using (var db = new HIPContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+        }
 
-		public UserModel Find(string id)
+		public bool Remove(string id)
 		{
-			UserModel user;
-			userModels.TryGetValue(id, out user);
-
-			return user;
-		}
-
-		public UserModel Remove(string id)
-		{
-			UserModel user;
-            userModels.TryRemove(id, out user);
-
-			return user;
+            return true;
 		}
 
 		public void Update(UserModel user)
 		{
-			userModels[user.Email] = user;
-		}
+            using (var db = new HIPContext())
+            {
+                var events = db.Users.Attach(user);
+                db.SaveChanges();
+            }
+        }
 	}
 }

@@ -7,7 +7,7 @@ namespace HIP.MobileAppService.Models
     {
         void Add(UserModel item);
         void Update(UserModel item);
-        UserModel Remove(string email);
+        bool Remove(string email);
         UserModel Get(string email);
         IEnumerable<UserModel> GetAll();
     }

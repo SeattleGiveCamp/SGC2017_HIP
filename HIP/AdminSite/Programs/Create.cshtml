@@ -50,9 +50,37 @@
             </li>
             <li class="date">
                 <label for="date">Date</label>
-                <input type="date" id="end-time" name="date" />
+                <input type="date" id="date" name="date" />
             </li>
         </ol>
         <input type="submit" value="Create" />
     </fieldset>
 </form>
+
+<script>
+// Attach a submit handler to the form
+$( "#create" ).submit(function( event ) {
+
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    var $form = $(this);
+    var $name = $form.find("input[name='name']").val();
+    var $description = $form.find("input[name='$description']").val();
+    var $date = $form.find("input[name='date']").val();
+    var $date = $form.find("input[name='date']").val();
+    var $date = $form.find("input[name='date']").val();
+
+    var $date = $form.find("input[name='date']").val();
+
+  // Get some values from elements on the page:
+  //var $form = $( this ),
+    //term = $form.find( "input[name='s']" ).val(),
+    //url = $form.attr( "action" );
+
+  // Send the data using post
+    //var posting = $.post( url, { s: term } );
+    alert($date);
+
+});
+</script>
