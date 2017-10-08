@@ -13,13 +13,13 @@ namespace HIP
 {
     public class ProgramListViewModel : ViewModelBase
     {
-        public ObservableCollection<EventViewModel> Items { get; set; }
+        public ObservableCollection<ProgramListItemViewModel> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ProgramListViewModel()
         {
             Title = "Upcoming Programs"; // this should really get set by the page, not the view model
-            Items = new ObservableCollection<EventViewModel>();
+            Items = new ObservableCollection<ProgramListItemViewModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -36,7 +36,7 @@ namespace HIP
                 var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
-                    Items.Add(new EventViewModel(item));
+                    Items.Add(new ProgramListItemViewModel(item));
                 }
             }
             catch (Exception ex)

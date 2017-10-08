@@ -36,7 +36,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CalendarService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ProgramListItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">

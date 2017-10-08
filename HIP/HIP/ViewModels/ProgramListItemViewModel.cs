@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace HIP.ViewModels
 {
-	public class EventViewModel
+	public class ProgramListItemViewModel
 	{
-		public EventViewModel(Event model)
+		public ProgramListItemViewModel(Event model)
 		{
 			Event = model;
 			//AddToCalendar = new Command(() => {
