@@ -15,7 +15,30 @@ namespace HIP.Views
         
         public LoginPage()
 		{
-            isFirstTime = true;
+            if (Application.Current.Properties.ContainsKey("email"))
+            {
+                var email = Application.Current.Properties["email"] as string;
+
+                var firstName = "";
+                if (Application.Current.Properties.ContainsKey("firstname"))
+                {
+                    firstName = Application.Current.Properties["firstname"] as string;
+                }
+
+                var lastName = "";
+                if (Application.Current.Properties.ContainsKey("lastname"))
+                {
+                    lastName = Application.Current.Properties["lastname"] as string;
+                }
+
+                user = new UserModel(email, firstName, lastName);
+                isFirstTime = false;
+            }
+            else
+            {
+                isFirstTime = true;
+            }
+
             layoutElements();
         }
 
@@ -146,7 +169,10 @@ namespace HIP.Views
                 email = emailEntry.Text;
             }
 
-            //TODO: Save user data to phone
+            Application.Current.Properties["email"] = email;
+            Application.Current.Properties["firstname"] = firstName;
+            Application.Current.Properties["lastname"] = lastName;
+            Application.Current.SavePropertiesAsync();
 
             OpenFavorites();
 
@@ -154,11 +180,7 @@ namespace HIP.Views
 
         public async void OpenFavorites()
         {
-            //TODO: Placeholder values
-            List<string> favs = new List<string>();
-            favs.Add("what: 5");
-
-            var modalPage = new FavoriteProgramsPage(favs);
+            var modalPage = new FavoriteProgramsPage();
             await Navigation.PushModalAsync(modalPage);
         }
 
