@@ -7,9 +7,8 @@ namespace HIP.MobileAppService.Models
     {
         void Add(EventModel item);
         void Update(EventModel item);
-        EventModel Remove(string email);
+        bool Remove(string email);
 		EventModel Get(string email);
-        List<EventModel> GetBefore(DateTime date);
 		IEnumerable<EventModel> GetAll();
     }
 }

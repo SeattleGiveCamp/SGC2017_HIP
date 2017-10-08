@@ -9,55 +9,63 @@ namespace HIP.MobileAppService.Models
 {
     public class EventRepository : IEventRepository
     {
-        private static ConcurrentDictionary<string, EventModel> eventModels =
-            new ConcurrentDictionary<string, EventModel>();
 
         public EventRepository()
         {
-            Add(new EventModel { Id = Guid.NewGuid().ToString(), Name = "Event 1", Description = "This is an item description." });
-            Add(new EventModel { Id = Guid.NewGuid().ToString(), Name = "Event 2", Description = "This is an item description." });
-            Add(new EventModel { Id = Guid.NewGuid().ToString(), Name = "Event 3", Description = "This is an item description." });
         }
 
         public EventModel Get(string id)
         {
-            return eventModels[id];
+            using (var db = new HIPContext())
+            {
+                var events = db.Events
+                    .Where(b => b.Id == id)
+                    .ToList();
+
+                return events.ElementAt(0);
+            }
         }
 
         public IEnumerable<EventModel> GetAll()
         {
-            return eventModels.Values;
+            using (var db = new HIPContext())
+            {
+                var events = db.Events
+                    .ToList();
+
+                return events;
+            }
         }
 
         public void Add(EventModel eventModel)
         {
-            eventModel.Id = Guid.NewGuid().ToString();
-            eventModels[eventModel.Id] = eventModel;
+            using (var db = new HIPContext())
+            {
+                db.Events.Add(eventModel);
+                db.SaveChanges();
+            }
         }
 
-        public List<EventModel> GetBefore(DateTime date){
-            return new List<EventModel>();
-        }
-
-        public EventModel Find(string id)
+        public bool Remove(string id)
         {
-            EventModel eventModel;
-            eventModels.TryGetValue(id, out eventModel);
+            //using (var db = new HIPContext())
+            //{
+            //    var events = db.Events
+            //        .Where(b => b.Id == id)
+            //        .ToList();
 
-            return eventModel;
-        }
-
-        public EventModel Remove(string id)
-        {
-            EventModel eventModel;
-            eventModels.TryRemove(id, out eventModel);
-
-            return eventModel;
+            //    return db.Remove(events.ElementAt(0));
+            //}
+            return true;
         }
 
         public void Update(EventModel eventModel)
         {
-            eventModels[eventModel.Id] = eventModel;
+            using (var db = new HIPContext())
+            {
+                var events = db.Events.Attach(eventModel);
+                db.SaveChanges();
+            }
         }
     }
 }
