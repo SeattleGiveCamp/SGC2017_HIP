@@ -166,10 +166,7 @@ namespace HIP.Views
             Application.Current.Properties["favorites"] = joinedString;
             await Application.Current.SavePropertiesAsync();
 
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-                App.Current.MainPage = new UpcomingProgramsPage();
-            else
-                App.Current.MainPage = new NavigationPage(new UpcomingProgramsPage());
+            App.Current.MainPage = new NavigationPage(new UpcomingProgramsPage());
         }
 
 
