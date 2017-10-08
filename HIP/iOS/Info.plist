@@ -43,7 +43,7 @@
 	<key>XSLaunchImageAssets</key>
 	<string>Resources/Assets.xcassets/LaunchImages.launchimage</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>HIP</string>
 </dict>

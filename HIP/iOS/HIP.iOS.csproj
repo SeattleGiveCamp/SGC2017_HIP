@@ -161,6 +161,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\HIP_icon_152.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\HIP_icon_167.png">
+      <InProject>false</InProject>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\HIP_icon_180.png">
       <InProject>false</InProject>
     </ImageAsset>
