@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.CurrentActivity;
 
 namespace HIP.Droid
 {
@@ -15,6 +16,7 @@ namespace HIP.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            CrossCurrentActivity.Current.Activity = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

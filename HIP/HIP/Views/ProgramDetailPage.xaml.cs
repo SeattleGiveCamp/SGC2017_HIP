@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using HIP.Models;
 using HIP.ViewModels;
 using HIP.Services;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+
 namespace HIP
 {
     public partial class ProgramDetailPage : ContentPage
@@ -15,7 +17,12 @@ namespace HIP
             InitializeComponent();
 
             BindingContext = this.viewModel = new ProgramDetailViewModel(viewModel.Item);
-            calendarPicker.SelectedIndexChanged += (sender, e) => doAddEvent();
+            calendarPicker.SelectedIndexChanged += (sender, e) =>
+            {
+                calendarPicker.IsVisible = false;
+                doAddEvent();
+            };
+            calendarPicker.On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUpdateMode(UpdateMode.WhenFinished);
         }
 
         void AddToCalendar_Clicked(object sender, System.EventArgs e)
