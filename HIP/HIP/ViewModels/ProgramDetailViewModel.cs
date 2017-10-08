@@ -5,10 +5,11 @@ using HIP.Models;
 
 namespace HIP
 {
-    public class EventDetailViewModel : ViewModelBase
+    public class ProgramDetailViewModel : ViewModelBase
     {
         public Event Item { get; set; }
-        public EventDetailViewModel(Event item = null)
+
+        public ProgramDetailViewModel(Event item = null)
         {
             Title = item?.Description;
             Item = item;

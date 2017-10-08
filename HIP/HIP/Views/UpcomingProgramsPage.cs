@@ -23,7 +23,7 @@ namespace HIP
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new EventDetailPage(new EventDetailViewModel(item)));
+            await Navigation.PushAsync(new ProgramDetailPage(new ProgramDetailViewModel(item)));
 
             // Manually deselect item
             ProgramsListView.SelectedItem = null;
