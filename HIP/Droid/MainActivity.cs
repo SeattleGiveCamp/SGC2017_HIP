@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.CurrentActivity;
+using Plugin.Permissions;
 
 namespace HIP.Droid
 {
@@ -31,5 +32,11 @@ namespace HIP.Droid
         {
             base.OnActivityResult(requestCode, resultCode, data);
         }
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+		{
+			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+		}
     }
 }
