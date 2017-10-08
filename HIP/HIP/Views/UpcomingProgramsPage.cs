@@ -6,15 +6,15 @@ using Xamarin.Forms;
 using HIP.Models;
 namespace HIP
 {
-    public partial class ItemsPage : ContentPage
+    public partial class UpcomingProgramsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        ProgramListViewModel viewModel;
 
-        public ItemsPage()
+        public UpcomingProgramsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ProgramListViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -26,7 +26,7 @@ namespace HIP
             await Navigation.PushAsync(new EventDetailPage(new EventDetailViewModel(item)));
 
             // Manually deselect item
-            ItemsListView.SelectedItem = null;
+            ProgramsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

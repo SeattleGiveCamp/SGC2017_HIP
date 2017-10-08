@@ -11,14 +11,14 @@ using HIP.ViewModels;
 
 namespace HIP
 {
-    public class ItemsViewModel : ViewModelBase
+    public class ProgramListViewModel : ViewModelBase
     {
         public ObservableCollection<EventViewModel> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public ProgramListViewModel()
         {
-            Title = "Browse";
+            Title = "Upcoming Programs"; // this should really get set by the page, not the view model
             Items = new ObservableCollection<EventViewModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
