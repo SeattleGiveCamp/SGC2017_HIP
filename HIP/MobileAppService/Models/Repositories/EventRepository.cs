@@ -56,15 +56,7 @@ namespace HIP.MobileAppService.Models
 
         public bool Remove(string id)
         {
-            //using (var db = new HIPContext())
-            //{
-            //    var events = db.Events
-            //        .Where(b => b.Id == id)
-            //        .ToList();
-
-            //    return db.Remove(events.ElementAt(0));
-            //}
-            return true;
+             throw new Exception("removing is not currently supported");
         }
 
         public void Update(EventModel eventModel)
