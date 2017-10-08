@@ -6,6 +6,7 @@ namespace HIP.MobileAppService.Models
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string Email { get; set; }
+        public bool IsMinor { get; set; }
 		public string ParentEmail { get; set; }
 
 		public UserModel(string parentEemail)
@@ -13,6 +14,7 @@ namespace HIP.MobileAppService.Models
 			FirstName = "";
 			LastName = "";
 			Email = "";
+            IsMinor = false;
 			ParentEmail = parentEemail;
 		}
 
@@ -21,6 +23,7 @@ namespace HIP.MobileAppService.Models
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
+            IsMinor = false;
 			ParentEmail = "";
 		}
 	}

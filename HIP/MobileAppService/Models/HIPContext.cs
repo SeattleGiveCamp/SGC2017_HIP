@@ -14,7 +14,7 @@ namespace HIP.MobileAppService.Models
         public DbSet<RecurringEventOccurrence> RecurringEventOccurrences { get; set; }
         public DbSet<EventBlackout> EventBlackouts { get; set; }
         public DbSet<EventCheckInModel> EventCheckIns { get; set; }
-        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<ProgramType> ProgramTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

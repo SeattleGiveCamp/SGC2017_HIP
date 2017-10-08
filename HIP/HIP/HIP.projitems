@@ -43,10 +43,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage.xaml.cs">
-      <DependentUpon>AdditionalVolunteerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AdditinalVolunteerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SignInViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VolunteerListItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage2.xaml.cs">
+      <DependentUpon>AdditionalVolunteerPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventCheckInModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">
@@ -67,9 +70,8 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <LogicalName>HIP.AdditionalVolunteerPage</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

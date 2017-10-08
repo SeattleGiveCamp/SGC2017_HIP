@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using HIP.Models;
-using HIP.ViewModels;
 using System.Collections.Generic;
 using Plugin.Calendars.Abstractions;
 using Plugin.Calendars;
@@ -24,7 +23,7 @@ namespace HIP
             Item = item;
 			Name = item.Name;
 			Description = item.Description;
-			Date = DateTime.Now.ToString();
+            Date = item.Start.ToString();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 

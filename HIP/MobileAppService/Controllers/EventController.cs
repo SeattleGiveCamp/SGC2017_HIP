@@ -42,16 +42,20 @@ namespace HIP.MobileAppService.Controllers
             if ((endDate-startDate).Days > 180){
                 throw new Exception("Cannot display events further than 180 days in the future");
             }
-            //IEnumerable<EventModel> storedEvents = EventRepository.GetAll();
+			//IEnumerable<EventModel> storedEvents = EventRepository.GetAll();
+			//return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
 
-            //return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
 
-            ////////TEMP///////////
-            List<Event> tmpList = new List<Event>();
-			tmpList.Add(new Event("qwert", "Carrott cutting party", "At my apartment", DateTime.Now.AddHours(1), DateTime.Now.AddHours(3), new List<ProgramType>()));
-			tmpList.Add(new Event("asdf", "Potato cutting party", "At your apartment", DateTime.Now.AddHours(2), DateTime.Now.AddHours(7), new List<ProgramType>()));
-			tmpList.Add(new Event("zxcv", "Beet cutting party", "At my friend's apartment", DateTime.Now.AddHours(3), DateTime.Now.AddHours(4), new List<ProgramType>()));
-            return tmpList;
+
+			////////TEMP///////////
+
+			List<Event> tmpList = new List<Event>();
+			tmpList.Add(new Event("qwert", "Healthy HIP Packs Packing Party", "Help pack weekend backpacks for kids who don't have access to free/reduced priced meals during the weekend\nLocation: Fellowship Hall at Lake City Presbyterian Church", DateTime.Now.AddHours(1), DateTime.Now.AddHours(3), new List<ProgramType>()));
+            tmpList.Add(new Event("asdf", "Senior Meals Prep", "Prepare meals for our Senior Meals program\nLocation: Lake City Presbyterian Church", DateTime.Now.AddDays(2), DateTime.Now.AddDays(7), new List<ProgramType>()));
+			tmpList.Add(new Event("zxcv", "Senior Meals Serving", "Serve meals, help with setup, and cleanup for our Senior Meals Program\nLocation: Lake City Community Center", DateTime.Now.AddHours(3), DateTime.Now.AddHours(4), new List<ProgramType>()));
+			tmpList.Add(new Event("zxcv", "Healthy HIP Packs Repackaging", "Repackage bulk food into smaller portions for our Healthy HIP Packs Program\nLocation: Fellowship Hall at Lake City Presbyterian Church", DateTime.Now.AddHours(30), DateTime.Now.AddHours(34), new List<ProgramType>()));
+			tmpList.Add(new Event("zxcv", "Afterschool Snacks", "Serve healthy snacks to kids and youth during the Homework Help program\nLocation: Lake City Branch of Seattle Public Libraries", DateTime.Now.AddHours(53), DateTime.Now.AddHours(54), new List<ProgramType>()));
+			return tmpList;
 		}
 
         [HttpPost]

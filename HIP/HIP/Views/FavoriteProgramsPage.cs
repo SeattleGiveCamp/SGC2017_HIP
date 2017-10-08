@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace HIP.Views
+namespace HIP
 {
 	public class FavoriteProgramsPage : ContentPage
 	{

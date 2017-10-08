@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HIP.MobileAppService.Models;
 using HIP.Models;
 
 namespace HIP
@@ -61,6 +62,41 @@ namespace HIP
         public async Task<IEnumerable<Event>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
+        }
+
+        Task<bool> IDataStore<Event>.AddItemAsync(Event item)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDataStore<Event>.UpdateItemAsync(Event item)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDataStore<Event>.DeleteItemAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Event> IDataStore<Event>.GetItemAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<Event>> IDataStore<Event>.GetItemsAsync(bool forceRefresh)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDataStore<Event>.RegisterUserAsync(UserModel item)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDataStore<Event>.CheckInUserOnEventAsync(EventCheckInModel item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,7 +5,7 @@ using HIP.Models;
 using HIP.Services;
 using Xamarin.Forms;
 
-namespace HIP.ViewModels
+namespace HIP
 {
 	public class ProgramListItemViewModel
 	{
@@ -14,7 +14,7 @@ namespace HIP.ViewModels
 			Event = model;
             Name = model.Name;
             Description = model.Description;
-            Date = DateTime.Now.ToString();
+            Date = model.Start.ToString();
 		}
 
         public string Name { get; set; }

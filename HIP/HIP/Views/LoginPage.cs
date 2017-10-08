@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using HIP.Models;
 
-namespace HIP.Views
+namespace HIP
 {
 	public class LoginPage : ContentPage
 	{
@@ -12,7 +13,8 @@ namespace HIP.Views
         bool isFirstTime;
 
         UserModel user;
-        
+        public IDataStore<Event> DataStore => DependencyService.Get<IDataStore<Event>>() ?? new MockDataStore();
+
         public LoginPage()
 		{
             if (Application.Current.Properties.ContainsKey("email"))
@@ -139,7 +141,7 @@ namespace HIP.Views
             layout.Padding = 10;
         }
 
-        void OnDoneButtonClicked(object sender, EventArgs e)
+        async void OnDoneButtonClicked(object sender, EventArgs e)
         {
             string firstName;
             if (firstNameEntry == null || string.IsNullOrWhiteSpace(firstNameEntry.Text))
@@ -174,7 +176,13 @@ namespace HIP.Views
             Application.Current.Properties["email"] = email;
             Application.Current.Properties["firstname"] = firstName;
             Application.Current.Properties["lastname"] = lastName;
-            Application.Current.SavePropertiesAsync();
+            await Application.Current.SavePropertiesAsync();
+
+            bool result = await DataStore.RegisterUserAsync(new UserModel(email, firstName, lastName));
+            if (!result)
+            {
+                await DisplayAlert("Error", "Cannot save credentials", "OK");
+            }
 
             OpenFavorites();
 

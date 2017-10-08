@@ -28,8 +28,8 @@ namespace HIP.Services
             CalendarEvent calEvent = new CalendarEvent();
             calEvent.Name = model.Name;
             calEvent.Description = model.Description;
-            calEvent.Start = DateTime.Now;
-            calEvent.End = DateTime.Now.AddHours(5);
+            calEvent.Start = model.Start;
+            calEvent.End = model.End;
 
 			var ready = await CheckPermissionsGetCalendarAsync();
 			if (!ready)
