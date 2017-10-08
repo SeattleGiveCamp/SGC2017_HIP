@@ -1,6 +1,12 @@
 {
   "images": [
     {
+      "scale": "2x",
+      "size": "83.5x83.5",
+      "idiom": "ipad",
+      "filename": "HIP_icon_167.png"
+    },
+    {
       "scale": "1x",
       "size": "29x29",
       "idiom": "iphone",
