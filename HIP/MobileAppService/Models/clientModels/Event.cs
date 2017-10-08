@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HIP.MobileAppService.Models;
 
 namespace HIP.MobileAppService.Models.ClientModels
 {
@@ -11,18 +12,21 @@ namespace HIP.MobileAppService.Models.ClientModels
         public string Description { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+		public List<ProgramType> ProgramCategories { get; set; }
 
-        public Event()
+		public Event()
         {
         }
 
-		public Event(string id, string name, string description, DateTime eventStart, DateTime eventEnd)
+		public Event(string id, string name, string description, DateTime eventStart, DateTime eventEnd, List<ProgramType> programCategories)
 		{
             Id = id;
             Name = name;
 			Description = description;
             Start = eventStart;
             End = eventEnd;
+            ProgramCategories = programCategories;
+
 		}
 
 
