@@ -13,7 +13,7 @@
                 
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
                     <Button 
-                        Margin="20,30,20,30"
+                        Margin="20,0,20,0"
                         WidthRequest="50"
                         HeightRequest="50"
                         FontSize="Large" FontAttributes="Bold"
@@ -22,7 +22,7 @@
                         Command="{Binding LessCommand}"/>
                     <Label FontSize="30" Text="{Binding DisplayHours}" WidthRequest="80" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                     <Button 
-                        Margin="20,30,20,30"
+                        Margin="20,0,20,0"
                         WidthRequest="50"
                         HeightRequest="50"
                         FontSize="Large" FontAttributes="Bold"
