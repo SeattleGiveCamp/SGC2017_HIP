@@ -2,13 +2,14 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using HIP.Models;
+using HIP.ViewModels;
 
 namespace HIP
 {
     public class EventDetailViewModel : ViewModelBase
     {
-        public Event Item { get; set; }
-        public EventDetailViewModel(Event item = null)
+        public EventViewModel Item { get; set; }
+        public EventDetailViewModel(EventViewModel item = null)
         {
             Title = item?.Description;
             Item = item;

@@ -7,15 +7,11 @@ using Xamarin.Forms;
 
 namespace HIP.ViewModels
 {
-	public class EventViewModel
+	public class ProgramListItemViewModel
 	{
-		public EventViewModel(Event model)
+		public ProgramListItemViewModel(Event model)
 		{
 			Event = model;
-			//AddToCalendar = new Command(() => {
-   //             await CalendarService.AddReminderAsync();
-			//});
-
             Name = model.Name;
             Description = model.Description;
             Date = DateTime.Now.ToString();
@@ -26,7 +22,5 @@ namespace HIP.ViewModels
         public string Date { get; set; }
 
 		public Event Event { get; set; }
-
-		public ICommand AddToCalendar { get; }
 	}
 }

@@ -4,34 +4,37 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using HIP.Models;
+using HIP.ViewModels;
+using HIP.Views;
+
 namespace HIP
 {
-    public partial class ItemsPage : ContentPage
+    public partial class UpcomingProgramsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        ProgramListViewModel viewModel;
 
-        public ItemsPage()
+        public UpcomingProgramsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ProgramListViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Event;
+            var item = args.SelectedItem as ProgramListItemViewModel;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new EventDetailPage(new EventDetailViewModel(item)));
+            await Navigation.PushAsync(new ProgramDetailPage(new ProgramDetailViewModel(item.Event)));
 
             // Manually deselect item
-            ItemsListView.SelectedItem = null;
+            ProgramsListView.SelectedItem = null;
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        async void Settings_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewItemPage());
+            await Navigation.PushAsync(new LoginPage());
         }
 
         protected override void OnAppearing()
