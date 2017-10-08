@@ -184,6 +184,10 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\ic_person_add.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_person_add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_person_add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_person_add.png" />
   </ItemGroup>
   <Import Project="..\HIP\HIP.projitems" Label="Shared" Condition="Exists('..\HIP\HIP.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
