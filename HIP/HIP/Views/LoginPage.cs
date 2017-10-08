@@ -57,6 +57,7 @@ namespace HIP.Views
             var layout = new StackLayout();
             scrollview.Content = layout;
 
+            Title = "Sign Up";
 
             var introWelcomeLabel = new Label
             {
@@ -101,7 +102,8 @@ namespace HIP.Views
 
             if (!isFirstTime)
             {
-                introWelcomeLabel.Text = "Settings";
+                Title = "Settings";
+                introWelcomeLabel.IsVisible = false;
                 introDetailsLabel.Text = "Update your personal information if needed.";
                 introDetails2Label.IsVisible = false;
 

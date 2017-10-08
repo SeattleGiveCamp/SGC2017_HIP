@@ -28,23 +28,23 @@ namespace HIP.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody]UserModel item)
+		public IActionResult Create([FromBody]UserModel userModel)
 		{
 			try
 			{
-				if (item == null || !ModelState.IsValid)
+				if (userModel == null || !ModelState.IsValid)
 				{
 					return BadRequest("Invalid State");
 				}
 
-				UserRepository.Add(item);
+				UserRepository.Add(userModel);
 
 			}
-			catch (Exception)
-			{
-				return BadRequest("Error while creating");
+			catch (Exception e)
+			{ 
+                return BadRequest("Error while creating: "+e.Message);
 			}
-			return Ok(item);
+			return Ok(userModel);
 		}
 
 		[HttpPut]
@@ -58,9 +58,9 @@ namespace HIP.Controllers
 				}
 				UserRepository.Update(item);
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-				return BadRequest("Error while creating");
+                return BadRequest("Error while creating:"+ e.Message);
 			}
 			return NoContent();
 		}

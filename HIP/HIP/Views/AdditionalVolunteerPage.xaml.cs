@@ -10,7 +10,9 @@ namespace HIP
     {
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
         {
-            
+            FirstNameView.IsVisible = !e.Value;
+            LastNameView.IsVisible = !e.Value;
+            EmailNameView.IsVisible = !e.Value;
         }
 
         public AdditionalVolunteerPage(Action<UserModel> returnUserCallback)

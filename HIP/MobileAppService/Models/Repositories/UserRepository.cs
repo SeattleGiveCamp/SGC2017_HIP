@@ -8,19 +8,16 @@ namespace HIP.MobileAppService.Models
 {
 	public class UserRepository : IUserRepository
 	{
-        private static ConcurrentDictionary<string, UserModel> userModels =
-			new ConcurrentDictionary<string, UserModel>();
 
 		public UserRepository()
-		{
-        }
+		{ }
 
-		public UserModel Get(string id)
+		public UserModel Get(string email)
 		{
             using (var db = new HIPContext())
             {
                 var users = db.Users
-                    .Where(b => b.Email == id)
+                    .Where(b => b.Email == email)
                     .ToList();
 
                 return users.ElementAt(0);
@@ -29,36 +26,44 @@ namespace HIP.MobileAppService.Models
 
 		public IEnumerable<UserModel> GetAll()
 		{
-            using (var db = new HIPContext())
-            {
-                var users = db.Users
-                    .ToList();
-
-                return users;
-            }
-        }
+			return new HIPContext().Users.ToList();
+		}
 
 		public void Add(UserModel user)
 		{
-            using (var db = new HIPContext())
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
-        }
+			using (var db = new HIPContext())
+			{
+                var existingUsers = db.Users.Where(u => u.Email == user.Email).ToList();
+                if (existingUsers != null && existingUsers.Count() > 0){
+                    Update(existingUsers.First());
+                }
+                else{
+					db.Users.Add(user);
+					db.SaveChanges();
+                }
+			}
+		}
 
 		public bool Remove(string id)
 		{
-            return true;
+            throw new Exception("removing is not currently supported");
 		}
 
 		public void Update(UserModel user)
 		{
-            using (var db = new HIPContext())
-            {
-                var events = db.Users.Attach(user);
-                db.SaveChanges();
-            }
-        }
+			if (user.Email == null || user.ParentEmail == null)
+			{
+				throw new Exception("in order to update a user, and email must be present");
+			}
+			if (user.FirstName == null || user.LastName == null)
+			{
+				throw new Exception("in order to update an existing user, both first and last names must be provided");
+			}
+			using (var db = new HIPContext())
+			{
+				var users = db.Users.Attach(user);
+				db.SaveChanges();
+			}
+		}
 	}
 }

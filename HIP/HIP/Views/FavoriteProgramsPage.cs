@@ -50,11 +50,22 @@ namespace HIP.Views
         //TODO: Remove this when hooked up
         void populateFakeElements()
         {
+            var names = new string[] {
+                "HIP Pack Packing Party",
+                "HIP Pack Final Assembly",
+                "HIP Pack Repackaging",
+                "Senior Meals Server",
+                "Meal Prep",
+                "Summer Meals Server",
+                "Snack Server",
+                "Office Work",
+                "Cooking Matters" };
+
             favoriteList = new List<favorite>();
-            for (int i = 0; i < 10; i++)
+            foreach (string name in names)
             {
                 var fav = new favorite();
-                fav.programType = new ProgramType("what: " + i.ToString());
+                fav.programType = new ProgramType(name);
                 favoriteList.Add(fav);
             }
         }
@@ -141,7 +152,7 @@ namespace HIP.Views
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            doneButton.Clicked += OnDoneButtonClicked;
+            doneButton.Clicked += OnDoneButtonClickedAsync;
             layout.Children.Add(doneButton);
 
 
@@ -151,7 +162,7 @@ namespace HIP.Views
 
 
 
-        void OnDoneButtonClicked(object sender, EventArgs e)
+        async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             var newFavs = new List<string>();
 
@@ -164,9 +175,9 @@ namespace HIP.Views
             }
             var joinedString = string.Join("\n", newFavs.ToArray());
             Application.Current.Properties["favorites"] = joinedString;
-            Application.Current.SavePropertiesAsync();
+            await Application.Current.SavePropertiesAsync();
 
-            //TODO: How do we force close these pages and make the Upcoming Program Page the primary??
+            App.Current.MainPage = new NavigationPage(new UpcomingProgramsPage());
         }
 
 
