@@ -8,7 +8,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIP.iOS", "iOS\HIP.iOS.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIP.Droid", "Droid\HIP.Droid.csproj", "{C978A43C-F4BE-4261-9447-E3183F2F95BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIP.MobileAppService", "MobileAppService\HIP.MobileAppService.csproj", "{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HIP.MobileAppService", "MobileAppService\HIP.MobileAppService.csproj", "{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminSite", "AdminSite\", "{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_12519"
+		Debug.AspNetCompiler.PhysicalPath = "AdminSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12519\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_12519"
+		Release.AspNetCompiler.PhysicalPath = "AdminSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12519\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "12519"
+		SlnRelativePath = "AdminSite\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -100,6 +121,30 @@ Global
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x64.ActiveCfg = Release|Any CPU
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x64.Build.0 = Release|Any CPU
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x86.ActiveCfg = Release|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|ARM.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|x64.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|x86.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|ARM.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|ARM.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|iPhone.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|iPhone.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|x64.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|x64.Build.0 = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|x86.ActiveCfg = Debug|Any CPU
+		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Release|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

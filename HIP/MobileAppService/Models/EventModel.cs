@@ -11,9 +11,9 @@ namespace HIP.MobileAppService.Models
         public string Description { get; set; }
         public EventType Type{ get; set; }
 
-		public List<EventOccurrence> Occurrences { get; } = new List<EventOccurrence>();
-		public List<RecurringEventOccurrence> RecurringOccurrences { get; } = new List<RecurringEventOccurrence>();
-		public List<EventBlackout> Blackouts { get; } = new List<EventBlackout>();
+        public List<EventOccurrence> Occurrences { get; }
+        public List<RecurringEventOccurrence> RecurringOccurrences { get; }
+        public List<EventBlackout> Blackouts { get; }
 
         //TODO remove, just to mock
         public EventModel()
@@ -23,6 +23,10 @@ namespace HIP.MobileAppService.Models
 		//For a single-time event
 		public EventModel(string id, string name, string description, DateTime eventStart, DateTime eventEnd, EventType type)
 		{
+			Occurrences = new List<EventOccurrence>();
+			RecurringOccurrences = new List<RecurringEventOccurrence>();
+			Blackouts = new List<EventBlackout>();
+
             Id = id;
             Name = name;
 			Description = description;
@@ -35,6 +39,10 @@ namespace HIP.MobileAppService.Models
 		//For a recurring event
 		public EventModel(string id, string name, string description, TimeSpan eventStart, TimeSpan eventEnd, DateTime recurrenceStart, DateTime recurrenceEnd, DayOfWeek occurrenceDay, EventType type)
 		{
+			Occurrences = new List<EventOccurrence>();
+			RecurringOccurrences = new List<RecurringEventOccurrence>();
+			Blackouts = new List<EventBlackout>();
+
 			Id = id;
 			Name = name;
 			Description = description;

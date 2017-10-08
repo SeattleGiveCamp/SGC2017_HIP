@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HIP.MobileAppService.Models;
 using Microsoft.AspNetCore.Mvc;
+using HIP.MobileAppService.Models.ClientModels;
 
 namespace HIP.MobileAppService.Controllers
 {
@@ -29,8 +30,7 @@ namespace HIP.MobileAppService.Controllers
         }
 
         [HttpGet("{endDate}")]
-		//public IEnumerable<EventModel> GetItemsBeforeDate(string endDateStr)
-		public List<EventModel> GetItemsBeforeDate(string endDateStr)
+		public List<Event> GetItemsBeforeDate(string endDateStr)
 
 		{
             DateTime startDate = DateTime.Today;
@@ -44,8 +44,7 @@ namespace HIP.MobileAppService.Controllers
             }
 			IEnumerable<EventModel> storedEvents = EventRepository.GetAll();
 
-            //return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
-            return new List<EventModel>();
+            return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
         }
 
         [HttpPost]
@@ -61,9 +60,9 @@ namespace HIP.MobileAppService.Controllers
                 EventRepository.Add(item);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest("Error while creating");
+                return BadRequest("Error while creating: "+e.Message);
             }
             return Ok(item);
         }

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-using HIP.Models;
+using HIP.MobileAppService.Models;
 
-namespace HIP.Controllers
+namespace HIP.MobileAppService.Controllers
 {
     [Route("api/[controller]")]
     public class ItemController : Controller

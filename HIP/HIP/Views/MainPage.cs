@@ -58,7 +58,7 @@ namespace HIP
 
             Children.Add(loginPage);
             Children.Add(upcomingPage);
-            Children.Add(aboutPage);
+            //Children.Add(aboutPage);
 
             Title = Children[0].Title;
         }

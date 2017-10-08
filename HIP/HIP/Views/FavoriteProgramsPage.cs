@@ -11,16 +11,48 @@ namespace HIP.Views
 {
 	public class FavoriteProgramsPage : ContentPage
 	{
-        ProgramType programCategories;
+        struct favorite
+        {
+            public ProgramType programType;
+            public Switch programSwitch;
+        }
+        List<favorite> favoriteList;
+        List<string> knownFavorites;
 
         Label loadingDetailsLabel;
 
-        public FavoriteProgramsPage ()
+        public FavoriteProgramsPage()
 		{
+            knownFavorites = new List<string>();
+            loadElements();
+        }
+
+        public FavoriteProgramsPage(List<string> knownFavorites)
+        {
+            this.knownFavorites = knownFavorites;
+            loadElements();
+        }
+
+        void loadElements()
+        {
             layoutLoadingElements();
             //TODO: Call loaded after retrevial or failure on fail
+
+            populateFakeElements();
             layoutLoadedElements();
             //layoutLoadFailureElements();
+        }
+
+
+        void populateFakeElements()
+        {
+            favoriteList = new List<favorite>();
+            for (int i = 0; i < 10; i++)
+            {
+                var fav = new favorite();
+                fav.programType = new ProgramType("what: " + i.ToString());
+                favoriteList.Add(fav);
+            }
         }
 
 
@@ -57,19 +89,83 @@ namespace HIP.Views
                 HorizontalTextAlignment = TextAlignment.Center,
             };
             
-            var wuht = new Label
+            var introLabel = new Label
             {
-                Text = "ZONG YESH",
+                Text = "Please select any program types you're interested in. This will help us to let you know about upcoming events.",
                 FontSize = 15,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center
             };
+            layout.Children.Add(introLabel);
+
             
 
-            layout.Children.Add(wuht);
+            for (int i = 0; i < favoriteList.Count; i++)
+            {
+                var elementLayout = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal
+                };
+                var switch1 = new Switch
+                {
+                    HorizontalOptions = LayoutOptions.Center
+                };
+                var name = favoriteList[i].programType.Name;
+                var fav = new favorite();
+                fav.programType = new ProgramType(name);
+                fav.programSwitch = switch1;
+                favoriteList[i] = fav;
+                var switchDescription = new Label
+                {
+                    Text = favoriteList[i].programType.Name,
+                    FontSize = 15,
+                    HorizontalTextAlignment = TextAlignment.Start,
+                    VerticalTextAlignment = TextAlignment.Center
+                };
+                elementLayout.Children.Add(switch1);
+                elementLayout.Children.Add(switchDescription);
+
+                switch1.IsToggled = knownFavorites.Contains(favoriteList[i].programType.Name);
+
+                layout.Children.Add(elementLayout);
+            }
+
+            var doneButton = new Button
+            {
+                Text = "Save",
+                VerticalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            doneButton.Clicked += OnDoneButtonClicked;
+            layout.Children.Add(doneButton);
+
+
             layout.Spacing = 10;
             layout.Padding = 10;
         }
+
+
+
+        void OnDoneButtonClicked(object sender, EventArgs e)
+        {
+            var newFavs = new List<string>();
+
+            foreach (favorite fav in favoriteList)
+            {
+                if (fav.programSwitch.IsToggled)
+                {
+                    newFavs.Add(fav.programType.Name);
+                }
+            }
+            //TODO: Save newFavs to phone storage
+
+            //TODO: How do we force close these pages and make the Upcoming Program Page the primary??
+        }
+
+
+
+
 
         public async Task<int> DownloadHomepage()
         {

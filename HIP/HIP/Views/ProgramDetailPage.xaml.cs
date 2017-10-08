@@ -28,13 +28,9 @@ namespace HIP
         void AddToCalendar_Clicked(object sender, System.EventArgs e)
         {
             if (viewModel.SelectedCalendar == null)
-                //await DisplayAlert("Error", "Select any calendar to add event", "OK");
                 calendarPicker.Focus();
             else
                 doAddEvent();
-            
-            //await DisplayAlert("Success", "Adding to ", "OK");
-
         }
 
         async void doAddEvent()
@@ -43,10 +39,20 @@ namespace HIP
                 return;
             
             bool result = await CalendarService.AddReminderAsync(viewModel.SelectedCalendar, viewModel.Item);
-			if (result == true)
-			    await DisplayAlert("Success", "Event has been added to your calendar", "OK");
-			else
-			    await DisplayAlert("Error", "Cannot add event", "OK");
+            if (result == true)
+                await DisplayAlert("Success", "Event has been added to your calendar", "OK");
+            else
+            {
+                if (viewModel.SelectedCalendar != null)
+                {
+                    viewModel.SelectedCalendar = null;
+                    await DisplayAlert("Error", "Select another calendar", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Cannot add event", "OK");
+                }
+            }
 		}
 
         async void Signin_Clicked(object sender, System.EventArgs e)
