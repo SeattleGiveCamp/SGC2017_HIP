@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HIP.MobileAppService.Models;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -8,6 +9,8 @@ namespace HIP.Views
 	{
         Entry firstNameEntry, lastNameEntry, emailEntry;
         bool isFirstTime;
+
+        UserModel user;
         
         public LoginPage()
 		{
@@ -15,6 +18,12 @@ namespace HIP.Views
             layoutElements();
         }
 
+        public LoginPage(UserModel user)
+        {
+            isFirstTime = false;
+            this.user = user;
+            layoutElements();
+        }
 
 
         void layoutElements()
@@ -71,7 +80,16 @@ namespace HIP.Views
                 introWelcomeLabel.Text = "Settings";
                 introDetailsLabel.Text = "Update your personal information if needed.";
                 introDetails2Label.IsVisible = false;
-                //TODO: Populate text boxes with User data
+
+                emailEntry.Text = user.Email;
+                if (!string.IsNullOrWhiteSpace(user.FirstName))
+                {
+                    firstNameEntry.Text = user.FirstName;
+                }
+                if (!string.IsNullOrWhiteSpace(user.LastName))
+                {
+                    lastNameEntry.Text = user.LastName;
+                }
             }
 
             var doneButton = new Button
