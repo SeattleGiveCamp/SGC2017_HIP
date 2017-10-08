@@ -1,5 +1,6 @@
 ﻿using HIP.MobileAppService.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -145,6 +146,7 @@ namespace HIP.Views
                 email = emailEntry.Text;
             }
 
+            //TODO: Save user data to phone
 
             OpenFavorites();
 
@@ -152,7 +154,11 @@ namespace HIP.Views
 
         public async void OpenFavorites()
         {
-            var modalPage = new FavoriteProgramsPage();
+            //TODO: Placeholder values
+            List<string> favs = new List<string>();
+            favs.Add("what: 5");
+
+            var modalPage = new FavoriteProgramsPage(favs);
             await Navigation.PushModalAsync(modalPage);
         }
 
