@@ -29,12 +29,12 @@ namespace HIP.MobileAppService.Controllers
             return EventRepository.Get(eventId);
         }
 
-        [HttpGet("{endDate}")]
-		public List<Event> GetItemsBeforeDate(string endDateStr)
+        [HttpGet("getByEndDate/{date}")]
+		public List<Event> GetItemsBeforeDate(string date)
 
 		{
             DateTime startDate = DateTime.Today;
-            DateTime endDate = DateTime.Parse(endDateStr);
+            DateTime endDate = DateTime.Parse(date);
 
             if (endDate == null || endDate < startDate){
 				throw new Exception("Can only display events from today onwards");
@@ -42,10 +42,17 @@ namespace HIP.MobileAppService.Controllers
             if ((endDate-startDate).Days > 180){
                 throw new Exception("Cannot display events further than 180 days in the future");
             }
-			IEnumerable<EventModel> storedEvents = EventRepository.GetAll();
+            //IEnumerable<EventModel> storedEvents = EventRepository.GetAll();
 
-            return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
-        }
+            //return eventMapper.BuildEventsToDisplay(startDate, endDate, storedEvents);
+
+            ////////TEMP///////////
+            List<Event> tmpList = new List<Event>();
+			tmpList.Add(new Event("qwert", "Carrott cutting party", "At my apartment", DateTime.Now.AddHours(1), DateTime.Now.AddHours(3), new List<ProgramType>()));
+			tmpList.Add(new Event("asdf", "Potato cutting party", "At your apartment", DateTime.Now.AddHours(2), DateTime.Now.AddHours(7), new List<ProgramType>()));
+			tmpList.Add(new Event("zxcv", "Beet cutting party", "At my friend's apartment", DateTime.Now.AddHours(3), DateTime.Now.AddHours(4), new List<ProgramType>()));
+            return tmpList;
+		}
 
         [HttpPost]
         public IActionResult Create([FromBody]EventModel item)
