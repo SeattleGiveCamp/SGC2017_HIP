@@ -17,8 +17,11 @@
 
 <h2>1. Find Event to Edit</h2>
 
+<div id="allEvents"><i>loading...</i></div>
+
 <div id="deleteDiv">
     <h2>2. Delete Event</h2>
+    <button id="deleteButton">Remove selected event</button>
 </div>
 
 <div id="changeDiv">
@@ -37,15 +40,11 @@
                 </li>
                 <li class="type">
                     <label for="type">Program Type</label>
-                    <select id="description" name="description" form="create">
+                    <select id="type" name="description" form="create">
                         <option value="t1">Type 1</option>
                         <option value="t2">Type 2</option>
                         <option value="t3">Type 3</option>
                     </select>
-                </li>
-                <li class="one-time">
-                    <label for="one-time">One-Time Event</label>
-                    <input type="checkbox" id="one-time" name="one-time" value="true" />
                 </li>
                 <li class="start-time">
                     <label for="start-time">Start Time</label>
@@ -57,10 +56,28 @@
                 </li>
                 <li class="date">
                     <label for="date">Date</label>
-                    <input type="date" id="end-time" name="date" />
+                    <input type="date" id="date" name="date" />
+                </li>
+                <li class="select-days">
+                    <h3>(Optional) Select Recurring Days</h3>
+                    <label for="monday">Monday</label>
+                    <input type="checkbox" id="monday" name="monday" value="false" />
+                    <label for="tuesday">Tuesday</label>
+                    <input type="checkbox" id="tuesday" name="tuesday" value="false" />
+                    <label for="wednesday">Wednesday</label>
+                    <input type="checkbox" id="wednesday" name="wednesday" value="false" />
+                    <label for="thursday">Thursday</label>
+                    <input type="checkbox" id="thursday" name="thursday" value="false" />
+                    <label for="friday">Friday</label>
+                    <input type="checkbox" id="friday" name="friday" value="false" />
+                    <label for="saturday">Saturday</label>
+                    <input type="checkbox" id="saturday" name="saturday" value="false" />
+                    <label for="sunday">Sunday</label>
+                    <input type="checkbox" id="sunday" name="sunday" value="false" />
                 </li>
             </ol>
-            <input type="submit" value="Change" />
+            <input type="submit" value="Change selected event" />
         </fieldset>
     </form>
 </div>
+
