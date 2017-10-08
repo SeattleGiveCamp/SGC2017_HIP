@@ -5,12 +5,28 @@ using System.Collections.Generic;
 
 namespace HIP.MobileAppService.Migrations
 {
-    public partial class initalmodels : Migration
+    public partial class stage1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "EventType",
+                name: "EventCheckIns",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CheckinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HourCount = table.Column<double>(type: "float", nullable: false),
+                    ParentUserEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventCheckIns", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EventTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -19,7 +35,20 @@ namespace HIP.MobileAppService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventType", x => x.Id);
+                    table.PrimaryKey("PK_EventTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Email);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,37 +64,29 @@ namespace HIP.MobileAppService.Migrations
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Events_EventType_TypeId",
+                        name: "FK_Events_EventTypes_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "EventType",
+                        principalTable: "EventTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventOccurrence",
+                name: "EventBlackouts",
                 columns: table => new
                 {
-                    BlackoutTime = table.Column<TimeSpan>(type: "time", nullable: true),
-                    EventModelId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BlackoutTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EventModelId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Start = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventOccurrence", x => x.Id);
+                    table.PrimaryKey("PK_EventBlackouts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventOccurrence_Events_EventModelId1",
-                        column: x => x.EventModelId1,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_EventOccurrence_Events_EventModelId",
+                        name: "FK_EventBlackouts_Events_EventModelId",
                         column: x => x.EventModelId,
                         principalTable: "Events",
                         principalColumn: "Id",
@@ -73,7 +94,28 @@ namespace HIP.MobileAppService.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RecurringEventOccurrence",
+                name: "EventOccurences",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    End = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventModelId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Start = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventOccurences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EventOccurences_Events_EventModelId",
+                        column: x => x.EventModelId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecurringEventOccurrences",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -87,9 +129,9 @@ namespace HIP.MobileAppService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RecurringEventOccurrence", x => x.Id);
+                    table.PrimaryKey("PK_RecurringEventOccurrences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RecurringEventOccurrence_Events_EventModelId",
+                        name: "FK_RecurringEventOccurrences_Events_EventModelId",
                         column: x => x.EventModelId,
                         principalTable: "Events",
                         principalColumn: "Id",
@@ -97,13 +139,13 @@ namespace HIP.MobileAppService.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventOccurrence_EventModelId1",
-                table: "EventOccurrence",
-                column: "EventModelId1");
+                name: "IX_EventBlackouts_EventModelId",
+                table: "EventBlackouts",
+                column: "EventModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventOccurrence_EventModelId",
-                table: "EventOccurrence",
+                name: "IX_EventOccurences_EventModelId",
+                table: "EventOccurences",
                 column: "EventModelId");
 
             migrationBuilder.CreateIndex(
@@ -112,24 +154,33 @@ namespace HIP.MobileAppService.Migrations
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RecurringEventOccurrence_EventModelId",
-                table: "RecurringEventOccurrence",
+                name: "IX_RecurringEventOccurrences_EventModelId",
+                table: "RecurringEventOccurrences",
                 column: "EventModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EventOccurrence");
+                name: "EventBlackouts");
 
             migrationBuilder.DropTable(
-                name: "RecurringEventOccurrence");
+                name: "EventCheckIns");
+
+            migrationBuilder.DropTable(
+                name: "EventOccurences");
+
+            migrationBuilder.DropTable(
+                name: "RecurringEventOccurrences");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
-                name: "EventType");
+                name: "EventTypes");
         }
     }
 }

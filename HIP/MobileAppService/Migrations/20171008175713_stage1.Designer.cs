@@ -6,14 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace HIP.MobileAppService.Migrations
 {
     [DbContext(typeof(HIPContext))]
-    [Migration("20171008040137_updateusers")]
-    partial class updateusers
+    [Migration("20171008175713_stage1")]
+    partial class stage1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +20,46 @@ namespace HIP.MobileAppService.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HIP.MobileAppService.Models.EventBlackout", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<TimeSpan>("BlackoutTime");
+
+                    b.Property<DateTime>("End");
+
+                    b.Property<string>("EventModelId");
+
+                    b.Property<DateTime>("Start");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventModelId");
+
+                    b.ToTable("EventBlackouts");
+                });
+
+            modelBuilder.Entity("HIP.MobileAppService.Models.EventCheckInModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CheckinDate");
+
+                    b.Property<string>("EventId");
+
+                    b.Property<double>("HourCount");
+
+                    b.Property<string>("ParentUserEmail");
+
+                    b.Property<string>("UserEmail");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventCheckIns");
+                });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventModel", b =>
                 {
@@ -45,9 +84,6 @@ namespace HIP.MobileAppService.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<DateTime>("End");
 
                     b.Property<string>("EventModelId");
@@ -58,9 +94,7 @@ namespace HIP.MobileAppService.Migrations
 
                     b.HasIndex("EventModelId");
 
-                    b.ToTable("EventOccurrence");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("EventOccurrence");
+                    b.ToTable("EventOccurences");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventType", b =>
@@ -72,7 +106,7 @@ namespace HIP.MobileAppService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventType");
+                    b.ToTable("EventTypes");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.RecurringEventOccurrence", b =>
@@ -96,7 +130,7 @@ namespace HIP.MobileAppService.Migrations
 
                     b.HasIndex("EventModelId");
 
-                    b.ToTable("RecurringEventOccurrence");
+                    b.ToTable("RecurringEventOccurrences");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.UserModel", b =>
@@ -115,17 +149,9 @@ namespace HIP.MobileAppService.Migrations
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventBlackout", b =>
                 {
-                    b.HasBaseType("HIP.MobileAppService.Models.EventOccurrence");
-
-                    b.Property<TimeSpan>("BlackoutTime");
-
-                    b.Property<string>("EventModelId1");
-
-                    b.HasIndex("EventModelId1");
-
-                    b.ToTable("EventBlackout");
-
-                    b.HasDiscriminator().HasValue("EventBlackout");
+                    b.HasOne("HIP.MobileAppService.Models.EventModel")
+                        .WithMany("Blackouts")
+                        .HasForeignKey("EventModelId");
                 });
 
             modelBuilder.Entity("HIP.MobileAppService.Models.EventModel", b =>
@@ -147,13 +173,6 @@ namespace HIP.MobileAppService.Migrations
                     b.HasOne("HIP.MobileAppService.Models.EventModel")
                         .WithMany("RecurringOccurrences")
                         .HasForeignKey("EventModelId");
-                });
-
-            modelBuilder.Entity("HIP.MobileAppService.Models.EventBlackout", b =>
-                {
-                    b.HasOne("HIP.MobileAppService.Models.EventModel")
-                        .WithMany("Blackouts")
-                        .HasForeignKey("EventModelId1");
                 });
 #pragma warning restore 612, 618
         }

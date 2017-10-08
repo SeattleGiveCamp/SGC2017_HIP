@@ -26,9 +26,6 @@ namespace HIP.MobileAppService
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-
-            EventRepository a = new EventRepository();
-            a.Add(new EventModel());
         }
 
         public IConfigurationRoot Configuration { get; }

@@ -39,10 +39,18 @@ namespace HIP.MobileAppService.Models
 
         public void Add(EventModel eventModel)
         {
-            using (var db = new HIPContext())
+            try
             {
-                db.Events.Add(eventModel);
-                db.SaveChanges();
+                using (var db = new HIPContext())
+                {
+                    db.Events.Add(eventModel);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
 
