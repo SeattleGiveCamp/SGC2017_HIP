@@ -34,7 +34,6 @@ namespace HIP.MobileAppService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<IItemRepository, ItemRepository>();
 			services.AddSingleton<IEventRepository, EventRepository>();
 			services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IEventCheckInRepository, EventCheckInRepository>();
