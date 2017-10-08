@@ -26,9 +26,9 @@ namespace HIP
                 await DisplayAlert("Error", "Cannot add event", "OK");
         }
 
-        void Signin_Clicked(object sender, System.EventArgs e)
+        async void Signin_Clicked(object sender, System.EventArgs e)
 		{
-            Navigation.PopAsync();
+            await Navigation.PushAsync(new SignInPage());
         }
     }
 }
