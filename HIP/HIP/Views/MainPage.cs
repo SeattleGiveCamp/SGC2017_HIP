@@ -11,48 +11,53 @@ namespace HIP
         //But for the start, let's use this as a simple launch screen to get to our different views
         public MainPage()
         {
-            Page loginPage, itemsPage, aboutPage = null;
+            Page loginPage, upcomingPage, aboutPage = null;
+            const string loginTitle = "Login";
+            const string upcomingTitle = "Upcoming";
+            const string aboutTitle = "About";
 
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
                     loginPage = new NavigationPage(new LoginPage())
                     {
-                        Title = "Login"
+                        Title = loginTitle
                     };
 
-                    itemsPage = new NavigationPage(new ItemsPage())
+                    upcomingPage = new NavigationPage(new UpcomingProgramsPage())
                     {
-                        Title = "Browse"
+                        Title = upcomingTitle,
+                        Icon = "tab_feed.png"                            
                     };
 
                     aboutPage = new NavigationPage(new AboutPage())
                     {
-                        Title = "About"
+                        Title = aboutTitle,
+                        Icon = "tab_about.png"
                     };
-                    itemsPage.Icon = "tab_feed.png";
-                    aboutPage.Icon = "tab_about.png";
+
                     break;
+
                 default:
                     loginPage = new LoginPage()
                     {
-                        Title = "Login"
+                        Title = loginTitle
                     };
 
-                    itemsPage = new ItemsPage()
+                    upcomingPage = new UpcomingProgramsPage()
                     {
-                        Title = "Browse"
+                        Title = upcomingTitle
                     };
 
                     aboutPage = new AboutPage()
                     {
-                        Title = "About"
+                        Title = aboutTitle
                     };
                     break;
             }
 
             Children.Add(loginPage);
-            Children.Add(itemsPage);
+            Children.Add(upcomingPage);
             Children.Add(aboutPage);
 
             Title = Children[0].Title;
