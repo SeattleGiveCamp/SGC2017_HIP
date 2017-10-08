@@ -17,4 +17,7 @@
     <Compile Remove="Models\test.cs" />
     <Compile Remove="Controllers\ItemController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\ClientModels\" />
+  </ItemGroup>
 </Project>
