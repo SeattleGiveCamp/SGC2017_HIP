@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIP.Droid", "Droid\HIP.Droi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HIP.MobileAppService", "MobileAppService\HIP.MobileAppService.csproj", "{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIP.UWP", "UWP\HIP.UWP.csproj", "{64B8CF77-B55F-45E9-90D1-4FC513773E8E}"
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminSite", "AdminSite\", "{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
@@ -35,7 +33,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminSite", "AdminSite\", "
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		HIP\HIP.projitems*{64b8cf77-b55f-45e9-90d1-4fc513773e8e}*SharedItemsImports = 4
 		HIP\HIP.projitems*{84cba4d3-768d-4494-97e1-4741b5057635}*SharedItemsImports = 13
 		HIP\HIP.projitems*{c978a43c-f4be-4261-9447-e3183f2f95bf}*SharedItemsImports = 4
 		HIP\HIP.projitems*{f599afad-c6b7-4690-81b0-81041e9eb416}*SharedItemsImports = 4
@@ -124,32 +121,6 @@ Global
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x64.ActiveCfg = Release|Any CPU
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x64.Build.0 = Release|Any CPU
 		{5B6A4DCF-BF24-4C2A-AC35-4A442AE0EBC0}.Release|x86.ActiveCfg = Release|Any CPU
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|Any CPU.Build.0 = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|Any CPU.Deploy.0 = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|ARM.ActiveCfg = Debug|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|ARM.Build.0 = Debug|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|ARM.Deploy.0 = Debug|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|iPhone.ActiveCfg = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x64.ActiveCfg = Debug|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x64.Build.0 = Debug|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x64.Deploy.0 = Debug|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x86.ActiveCfg = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x86.Build.0 = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Debug|x86.Deploy.0 = Debug|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|Any CPU.ActiveCfg = Release|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|ARM.ActiveCfg = Release|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|ARM.Build.0 = Release|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|ARM.Deploy.0 = Release|ARM
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|iPhone.ActiveCfg = Release|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x64.ActiveCfg = Release|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x64.Build.0 = Release|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x64.Deploy.0 = Release|x64
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x86.ActiveCfg = Release|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x86.Build.0 = Release|x86
-		{64B8CF77-B55F-45E9-90D1-4FC513773E8E}.Release|x86.Deploy.0 = Release|x86
 		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC41CE4-FDAC-4A59-9B37-B66DC609B092}.Debug|ARM.ActiveCfg = Debug|Any CPU
