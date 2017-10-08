@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HIP.ProgramDetailPage" Title="{Binding Title}">
 	<StackLayout Spacing="20" Padding="15">
-		<Label Text="{Binding Item.Name}" FontSize="Medium" />
-		<Label Text="{Binding Item.Description}" FontSize="Small" />
-        <Label Text="{Binding Item.Date}" FontSize="Small" />
+		<Label Text="{Binding Name}" FontSize="Medium" />
+		<Label Text="{Binding Description}" FontSize="Small" />
+        <Label Text="{Binding Date}" FontSize="Small" />
 
         <Button Text="Add to Calendar" Clicked="AddToCalendar_Clicked" />
-        <Button Text="Submit" Clicked="Submit_Clicked" />
+        <Button Text="Sign In" Clicked="Signin_Clicked" />
 	</StackLayout>
 </ContentPage>

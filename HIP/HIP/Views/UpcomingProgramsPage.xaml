@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HIP.UpcomingProgramsPage" Title="{Binding Title}" x:Name="UpcomingProgramsPage">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+		<ToolbarItem Text="Settings" Clicked="Settings_Clicked" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout>
@@ -12,7 +12,6 @@
 							<StackLayout Padding="10">
 								<Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                                 <Label Text="{Binding Date}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
-                                <Button Text="Add to Calendar" Command="{Binding AddToCalendar}" />
 							</StackLayout>
 						</ViewCell>
 					</DataTemplate>

@@ -6,29 +6,29 @@ using HIP.ViewModels;
 using HIP.Services;
 namespace HIP
 {
-    public partial class ProgramDetailPage : ContentPage
+    public partial class EventDetailPage : ContentPage
     {
-        ProgramDetailViewModel viewModel;
+        EventDetailViewModel viewModel;
 
-        public ProgramDetailPage(ProgramDetailViewModel viewModel)
+        public EventDetailPage(EventDetailViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = new ProgramDetailViewModel(program);
+            BindingContext = this.viewModel = viewModel;
         }
 
         async void AddToCalendar_Clicked(object sender, System.EventArgs e)
         {
-            bool result = await CalendarService.AddReminderAsync(viewModel.Item);
+            bool result = await CalendarService.AddReminderAsync(viewModel.Item.Event);
             if (result == true)
                 await DisplayAlert("Success", "Event has been added to your calendar", "OK");
             else
                 await DisplayAlert("Error", "Cannot add event", "OK");
         }
 
-        void Signin_Clicked(object sender, System.EventArgs e)
+		void Signin_Clicked(object sender, System.EventArgs e)
 		{
-            Navigation.PopAsync();
-        }
+			Navigation.PopAsync();
+		}
     }
 }
