@@ -34,6 +34,7 @@ namespace HIP.MobileAppService
         {
             services.AddMvc();
             services.AddSingleton<IItemRepository, ItemRepository>();
+			services.AddSingleton<IEventRepository, EventRepository>();
 
             services.AddSwaggerGen(c =>
             {
