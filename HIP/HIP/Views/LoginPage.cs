@@ -176,7 +176,7 @@ namespace HIP
             Application.Current.Properties["email"] = email;
             Application.Current.Properties["firstname"] = firstName;
             Application.Current.Properties["lastname"] = lastName;
-            await Current.SavePropertiesAsync();
+            await Application.Current.SavePropertiesAsync();
 
             bool result = await DataStore.RegisterUserAsync(new UserModel(email, firstName, lastName));
             if (!result)
