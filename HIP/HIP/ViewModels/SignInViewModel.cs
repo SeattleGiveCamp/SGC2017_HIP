@@ -10,8 +10,9 @@ namespace HIP
 {
 	public class SignInViewModel : ViewModelBase
 	{
-		public SignInViewModel()
+        public SignInViewModel(INavigation navigation)
 		{
+            Navigation = navigation;
 			Title = "Sign In";
 
             AdditionalVolunteers = new ObservableCollection<VolunteerListItemViewModel>();
@@ -34,6 +35,8 @@ namespace HIP
         private void Send()
         {
             UserModel[] additionalVolunteers = AdditionalVolunteers.Select(m => m.Model).ToArray();
+            //TODO send to cloud code
+            Navigation.PopAsync();
         }
 
         public void AddVolunteer(UserModel user)
@@ -79,6 +82,7 @@ namespace HIP
 		public ICommand LessCommand { get; }
 		public ICommand MoreCommand { get; }
 		public ICommand SendCommand { get; }
+        private INavigation Navigation { get; }
 	}
 }
 

@@ -15,7 +15,7 @@ namespace HIP
         public SignInPage()
         {
             InitializeComponent();
-			BindingContext = viewModel = new SignInViewModel();
+            BindingContext = viewModel = new SignInViewModel(Navigation);
 
 		}
 
