@@ -1,11 +1,14 @@
 ﻿using System;
-namespace HIP.MobileAppService.Models.ClientModels
+namespace HIP.MobileAppService.Models
 {
     public class UserModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+
+		public UserModel()
+        {}
 
         public UserModel(string email)
         {
