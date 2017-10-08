@@ -33,7 +33,7 @@ namespace HIP.MobileAppService.Models
 
 
 		//For a recurring event
-		public EventModel(string id, string name, string description, DateTime eventStart, DateTime eventEnd, DateTime recurrenceStart, DateTime recurrenceEnd, DayOfWeek occurrenceDay, EventType type)
+		public EventModel(string id, string name, string description, TimeSpan eventStart, TimeSpan eventEnd, DateTime recurrenceStart, DateTime recurrenceEnd, DayOfWeek occurrenceDay, EventType type)
 		{
 			Id = id;
 			Name = name;
