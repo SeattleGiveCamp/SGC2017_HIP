@@ -14,7 +14,16 @@ namespace HIP.Services
 {
 	public static class CalendarService
 	{
-		public static async Task<bool> AddReminderAsync(Event model)
+        public static async Task<IList<Calendar>> GetCalendarsAsync()
+        {
+			var ready = await CheckPermissionsGetCalendarAsync();
+			if (!ready)
+                return new List<Calendar>();
+            
+            return await CrossCalendars.Current.GetCalendarsAsync();
+        }
+
+		public static async Task<bool> AddReminderAsync(Calendar calendar, Event model)
 		{
             CalendarEvent calEvent = new CalendarEvent();
             calEvent.Name = model.Name;
@@ -27,14 +36,8 @@ namespace HIP.Services
 				return false;
 
 			try
-			{
-                //Create event and then create the reminder!
-                IList<Calendar> calendars = await CrossCalendars.Current.GetCalendarsAsync();
-                if (calendars == null || calendars.Count == 0)
-                    return false;
-
-                Calendar cal = calendars[0];                                          
-				await CrossCalendars.Current.AddOrUpdateEventAsync(cal, calEvent);
+			{                                         
+                await CrossCalendars.Current.AddOrUpdateEventAsync(calendar, calEvent);
 			}
 			catch (Exception ex)
 			{

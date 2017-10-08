@@ -4,7 +4,7 @@
 		<Label Text="{Binding Name}" FontSize="Medium" />
 		<Label Text="{Binding Description}" FontSize="Small" />
         <Label Text="{Binding Date}" FontSize="Small" />
-
+        <Picker IsVisible="false" x:Name="calendarPicker" SelectedItem="{Binding SelectedCalendar}" ItemDisplayBinding="{Binding Name}" ItemsSource="{Binding UserCalendars}" Title="Select a calendar" />
         <Button Text="Add to Calendar" Clicked="AddToCalendar_Clicked" />
         <Button Text="Sign In" Clicked="Signin_Clicked" />
 	</StackLayout>
