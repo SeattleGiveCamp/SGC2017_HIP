@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HIP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,18 +11,65 @@ namespace HIP.Views
 {
 	public class FavoriteProgramsPage : ContentPage
 	{
-		public FavoriteProgramsPage ()
+        ProgramType programCategories;
+
+        Label loadingDetailsLabel;
+
+        public FavoriteProgramsPage ()
 		{
-			Content = new StackLayout {
-				Children = {
-					new Label { Text = "Welcome to Xamarin Forms!" }
-				}
-			};
-		}
+            layoutLoadingElements();
+            //TODO: Call loaded after retrevial or failure on fail
+            layoutLoadedElements();
+            //layoutLoadFailureElements();
+        }
 
 
+        void layoutLoadingElements()
+        {
+            loadingDetailsLabel = new Label
+            {
+                Text = "Please wait just a moment...",
+                FontSize = 15,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center
+            };
+
+            Content = loadingDetailsLabel;
+        }
+
+        void layoutLoadFailureElements()
+        {
+            loadingDetailsLabel.Text = "Something went wrong! Please check your internet connection and try again. (Sorry, we know that's a bad line.)";
+        }
+
+        void layoutLoadedElements()
+        {
+            var scrollview = new ScrollView();
+            Content = scrollview;
+            var layout = new StackLayout();
+            scrollview.Content = layout;
 
 
+            var introWelcomeLabel = new Label
+            {
+                Text = "Welcome!",
+                FontSize = 30,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+            
+            var wuht = new Label
+            {
+                Text = "ZONG YESH",
+                FontSize = 15,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center
+            };
+            
+
+            layout.Children.Add(wuht);
+            layout.Spacing = 10;
+            layout.Padding = 10;
+        }
 
         public async Task<int> DownloadHomepage()
         {
