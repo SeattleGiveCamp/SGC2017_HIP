@@ -110,6 +110,7 @@ namespace HIP.Views
             layout.Children.Add(emailEntry);
             layout.Children.Add(doneButton);
             layout.Spacing = 10;
+            layout.Padding = 10;
         }
 
         void OnDoneButtonClicked(object sender, EventArgs e)
@@ -149,11 +150,10 @@ namespace HIP.Views
 
         }
 
-        public async Task<int> OpenFavorites()
+        public async void OpenFavorites()
         {
             var modalPage = new FavoriteProgramsPage();
             await Navigation.PushModalAsync(modalPage);
-            return 0;
         }
 
 
