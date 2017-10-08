@@ -19,7 +19,6 @@ namespace HIP
             SendCommand = new Command(() => Send());
             LessCommand = new Command(() => AddTime(-0.5));
 			MoreCommand = new Command(() => AddTime(0.5));
-            AddVolunteerCommand = new Command(() => AddVolunteer());
 
             UserModel user1 = new UserModel("foo@bar.com", "Hello", "World");
 			UserModel user2 = new UserModel("noname@nemo.com");
@@ -37,9 +36,9 @@ namespace HIP
             UserModel[] additionalVolunteers = AdditionalVolunteers.Select(m => m.Model).ToArray();
         }
 
-        private void AddVolunteer()
+        public void AddVolunteer(UserModel user)
         {
-            
+            AdditionalVolunteers.Add(new VolunteerListItemViewModel(user));
         }
 
         private double Hours = 8.5;
@@ -80,7 +79,6 @@ namespace HIP
 		public ICommand LessCommand { get; }
 		public ICommand MoreCommand { get; }
 		public ICommand SendCommand { get; }
-        public ICommand AddVolunteerCommand { get; }
 	}
 }
 

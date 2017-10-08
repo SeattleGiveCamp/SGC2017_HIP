@@ -10,9 +10,9 @@ namespace HIP
     {
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
         {
-            FirstNameView.IsVisible = !e.Value;
-            LastNameView.IsVisible = !e.Value;
-            EmailNameView.IsVisible = !e.Value;
+            //FirstNameView.IsVisible = !e.Value;
+            //LastNameView.IsVisible = !e.Value;
+            //EmailNameView.IsVisible = !e.Value;
         }
 
         public AdditionalVolunteerPage(Action<UserModel> returnUserCallback)
@@ -28,8 +28,11 @@ namespace HIP
             if (!viewModel.IsChild)
                 user = new UserModel(viewModel.EmailName, viewModel.FirstName, viewModel.LastName);
             else
-                user = new UserModel("");
-            
+            {
+				user = new UserModel("");
+                user.IsMinor = true;
+			}
+
             returnUserCallback.Invoke(user);
             await Navigation.PopAsync();
         }
