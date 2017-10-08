@@ -43,7 +43,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AdditinalVolunteerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AdditionalVolunteerViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SignInViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VolunteerListItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalVolunteerPage2.xaml.cs">
