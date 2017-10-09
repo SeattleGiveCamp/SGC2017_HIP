@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace HIP
 {
-	public partial class AdditionalVolunteerPage2 : ContentPage
+	public partial class AdditionalVolunteerPage : ContentPage
 	{
 		void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
 		{
@@ -15,7 +15,7 @@ namespace HIP
 			EmailNameView.IsVisible = !e.Value;
 		}
 
-		public AdditionalVolunteerPage2(Action<UserModel> returnUserCallback)
+		public AdditionalVolunteerPage(Action<UserModel> returnUserCallback)
 		{
 			InitializeComponent();
 			BindingContext = viewModel = new AdditionalVolunteerViewModel();

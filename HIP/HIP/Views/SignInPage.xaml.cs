@@ -9,7 +9,7 @@ namespace HIP
     {
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new AdditionalVolunteerPage2((MobileAppService.Models.UserModel user) => viewModel.AddVolunteer(user)));
+            Navigation.PushAsync(new AdditionalVolunteerPage((MobileAppService.Models.UserModel user) => viewModel.AddVolunteer(user)));
         }
 
         public SignInPage()
