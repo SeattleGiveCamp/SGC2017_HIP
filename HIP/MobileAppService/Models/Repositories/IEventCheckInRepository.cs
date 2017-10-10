@@ -7,5 +7,6 @@ namespace HIP.MobileAppService.Models.Repositories
     {
         void Add(EventCheckInModel item);
 		IEnumerable<EventCheckInModel> GetAll();
-    }
+        List<EventCheckInModel> GetBetweenDates(DateTime startDate, DateTime endDate);
+	}
 }
