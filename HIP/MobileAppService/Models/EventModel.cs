@@ -10,7 +10,7 @@ namespace HIP.MobileAppService.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public ProgramType Type{ get; set; }
-		public List<ProgramType> ProgramCategories { get; set; }
+		public String ProgramCategory { get; set; }
 
 		public List<EventOccurrence> Occurrences { get; }
         public List<RecurringEventOccurrence> RecurringOccurrences { get; }
