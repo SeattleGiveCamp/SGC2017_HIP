@@ -9,8 +9,7 @@ namespace HIP.MobileAppService.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProgramType Type{ get; set; }
-		public List<ProgramType> ProgramCategories { get; set; }
+		public String ProgramCategory { get; set; }
 
 		public List<EventOccurrence> Occurrences { get; }
         public List<RecurringEventOccurrence> RecurringOccurrences { get; }
@@ -30,7 +29,7 @@ namespace HIP.MobileAppService.Models
             Id = id;
             Name = name;
 			Description = description;
-            Type = type;
+            ProgramCategory = type.Name;
 			EventOccurrence singleTimeOccurrence = new EventOccurrence(id, eventStart, eventEnd);
 			Occurrences.Add(singleTimeOccurrence);
 		}
@@ -46,7 +45,7 @@ namespace HIP.MobileAppService.Models
 			Id = id;
 			Name = name;
 			Description = description;
-			Type = type;
+            ProgramCategory = type.Name;
             RecurringEventOccurrence returringOccurrence = new RecurringEventOccurrence(eventStart, eventEnd, occurrenceDay, recurrenceStart, recurrenceEnd);
 			RecurringOccurrences.Add(returringOccurrence);
 		}

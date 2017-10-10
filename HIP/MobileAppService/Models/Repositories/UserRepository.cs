@@ -24,7 +24,7 @@ namespace HIP.MobileAppService.Models
             }
         }
 
-		public IEnumerable<UserModel> GetAll()
+		public List<UserModel> GetAll()
 		{
 			return new HIPContext().Users.ToList();
 		}

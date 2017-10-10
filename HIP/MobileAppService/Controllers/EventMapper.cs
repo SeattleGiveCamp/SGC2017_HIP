@@ -98,7 +98,9 @@ namespace HIP.MobileAppService.Controllers
 
 		private Event ConvertEvent(EventModel storedEvent, DateTime startTime, DateTime endTime)
 		{
-            return new Event(storedEvent.Id, storedEvent.Name, storedEvent.Description, startTime, endTime, storedEvent.ProgramCategories);
+            List<ProgramType> types = new List<ProgramType>();
+            types.Add(new ProgramType(storedEvent.ProgramCategory));
+            return new Event(storedEvent.Id, storedEvent.Name, storedEvent.Description, startTime, endTime, types);
 		}
 
 	}

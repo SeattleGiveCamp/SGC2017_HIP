@@ -24,5 +24,12 @@ namespace HIP.MobileAppService.Models
 				db.SaveChanges();
 			}
 		}
+
+        public List<EventCheckInModel> GetBetweenDates(DateTime startDate, DateTime endDate)
+        {
+			return new HIPContext().EventCheckIns
+                                   .Where(t => t.CheckinDate >= startDate && t.CheckinDate <= endDate)
+                                   .ToList();
+        }
 	}
 }
