@@ -60,7 +60,8 @@ namespace HIP.MobileAppService.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Error while creating: "+e.Message);
+                string error = "Error while creating: " + e.Message+". "+e.InnerException;
+                return BadRequest(error);
             }
             return Ok(item);
         }
