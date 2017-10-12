@@ -13,6 +13,7 @@ namespace HIP.MobileAppService.Models
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 
+        public EventOccurrence() { }
 		public EventOccurrence(String EventId, DateTime startTime, DateTime endTime)
 		{
 			Start = startTime;
