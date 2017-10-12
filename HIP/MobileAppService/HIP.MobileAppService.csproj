@@ -20,6 +20,10 @@
   <ItemGroup>
     <Compile Remove="Models\test.cs" />
     <Compile Remove="Models\EventType.cs" />
+    <Compile Remove="Models\Repositories\ItemRepository.cs" />
+    <Compile Remove="Models\Repositories\IItemRepository.cs" />
+    <Compile Remove="Models\Item.cs" />
+    <Compile Remove="Controllers\ItemController.cs" />
   </ItemGroup>
 
   <ItemGroup>
