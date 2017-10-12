@@ -29,9 +29,9 @@ namespace HIP.MobileAppService.Controllers
 		private List<Event> GetSingleOccurrences(EventModel storedEvent, DateTime startDate, DateTime endDate)
 		{
 			List<Event> singleOccurrences = new List<Event>();
-            foreach (EventOccurrence occurrence in storedEvent.Occurrences)
+            foreach (EventOccurrence occurrence in storedEvent.getOccurrences())
             {
-                if (datesOverlap(occurrence, startDate, endDate) && !IsBlackedOut(occurrence, storedEvent.Blackouts))
+                if (datesOverlap(occurrence, startDate, endDate) && !IsBlackedOut(occurrence, storedEvent.getBlackouts()))
                 {
 					Event newEvent = ConvertEvent(storedEvent, occurrence.Start, occurrence.End);
 					singleOccurrences.Add(newEvent);
@@ -45,13 +45,13 @@ namespace HIP.MobileAppService.Controllers
             List<Event> recurringOccurrences = new List<Event>();
             for (DateTime day = startDate.Date; day.Date <= endDate.Date; day = day.AddDays(1))
             {
-				foreach (RecurringEventOccurrence occurrence in storedEvent.RecurringOccurrences)
+				foreach (RecurringEventOccurrence occurrence in storedEvent.getRecurringOccurrences())
 				{
                     if (occurrence.RecurringDay == day.DayOfWeek )
 					{
                         DateTime eventStart = day.Add(occurrence.StartTime);
                         DateTime eventEnd = day.Add(occurrence.EndTime);
-                        if (!IsBlackedOut(eventStart, eventEnd, storedEvent.Blackouts))
+                        if (!IsBlackedOut(eventStart, eventEnd, storedEvent.getBlackouts()))
                         {
 							Event newEvent = ConvertEvent(storedEvent, eventStart, eventEnd);
 							recurringOccurrences.Add(newEvent);
