@@ -6,22 +6,21 @@ namespace HIP.MobileAppService.Models
 {
     public class EventModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+		public string Id { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
 		public String ProgramCategory { get; set; }
 
-        private List<EventOccurrence> Occurrences;
-        public List<EventOccurrence> getOccurrences() { return Occurrences != null ? Occurrences : new List<EventOccurrence>(); }
+		public List<EventOccurrence> Occurrences { get; set; }
+		public List<RecurringEventOccurrence> RecurringOccurrences { get; set; }
+		public List<EventBlackout> Blackouts { get; set; }
 
-        private List<RecurringEventOccurrence> RecurringOccurrences;
-        public List<RecurringEventOccurrence> getRecurringOccurrences(){
+        public List<EventOccurrence> getOccurrencesSafely() { return Occurrences != null ? Occurrences : new List<EventOccurrence>(); }
+
+        public List<RecurringEventOccurrence> getRecurringOccurrencesSafely(){
             return RecurringOccurrences != null ? RecurringOccurrences : new List<RecurringEventOccurrence>(); 
         }
-
-        private List<EventBlackout> Blackouts;
-
-		public List<EventBlackout> getBlackouts()
+		public List<EventBlackout> getBlackoutsSafely()
 		{
 			return Blackouts != null ? Blackouts : new List<EventBlackout>();
 		}
