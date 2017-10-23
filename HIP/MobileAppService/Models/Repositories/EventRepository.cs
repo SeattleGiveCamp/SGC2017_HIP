@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.EntityFrameworkCore;
 
 namespace HIP.MobileAppService.Models
 {
@@ -20,6 +21,9 @@ namespace HIP.MobileAppService.Models
             {
                 var events = db.Events
                     .Where(b => b.Id == id)
+				   .Include(e => e.RecurringOccurrences)
+    			   .Include(e => e.Occurrences)
+    			   .Include(e => e.Blackouts)
                     .ToList();
 
                 return events.ElementAt(0);
@@ -30,10 +34,21 @@ namespace HIP.MobileAppService.Models
         {
             using (var db = new HIPContext())
             {
-                var events = db.Events
-                    .ToList();
+                try
+                {
+					var events = db.Events
+								   .Include(e => e.RecurringOccurrences)
+                                   .Include(e => e.Occurrences)
+                                   .Include(e => e.Blackouts)
+						           .ToList();
 
-                return events;
+                    return events;
+                }
+				catch (Exception e)
+				{
+					Console.WriteLine(e);
+					throw;
+				}
             }
         }
 
