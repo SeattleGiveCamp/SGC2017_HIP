@@ -25,8 +25,7 @@ namespace HIP.MobileAppService.Models
     			   .Include(e => e.Occurrences)
     			   .Include(e => e.Blackouts)
                     .ToList();
-
-                return events.ElementAt(0);
+                return events.Count() > 0 ? events.ElementAt(0) : null;
             }
         }
 
