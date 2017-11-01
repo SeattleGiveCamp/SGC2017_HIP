@@ -14,6 +14,7 @@ namespace HIP.MobileAppService.Models
         public TimeSpan EndTime { get; set; }
 		public DayOfWeek RecurringDay { get; set; }
 
+        public RecurringEventOccurrence(){}
 		public RecurringEventOccurrence(TimeSpan startTime, TimeSpan endTime, DayOfWeek day, DateTime recurrenceStart, DateTime recurrenceEnd)
 		{
 			RecurringDay = day;

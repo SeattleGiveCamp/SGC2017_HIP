@@ -14,6 +14,7 @@ namespace HIP.MobileAppService.Models
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 
+        public EventBlackout(){}
         public EventBlackout(DateTime startTime, DateTime endTime)
         {
             Start = startTime;
