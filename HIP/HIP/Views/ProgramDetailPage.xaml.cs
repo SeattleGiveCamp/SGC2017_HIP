@@ -11,11 +11,11 @@ namespace HIP
     {
         ProgramDetailViewModel viewModel;
 
-        public ProgramDetailPage(ProgramDetailViewModel viewModel)
+        public ProgramDetailPage(Event program)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = new ProgramDetailViewModel(viewModel.Item);
+            BindingContext = this.viewModel = new ProgramDetailViewModel(program);
             calendarPicker.SelectedIndexChanged += (sender, e) =>
             {
                 calendarPicker.IsVisible = false;
