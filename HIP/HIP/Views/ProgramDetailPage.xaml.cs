@@ -56,8 +56,7 @@ namespace HIP
 
         async void Signin_Clicked(object sender, System.EventArgs e)
 		{
-            await Navigation.PushAsync(new SignInPage());
-			//await Navigation.PushAsync(new AdditionalVolunteerPage((user) => DisplayAlert("User added", user.FirstName, "OK")));
+            await Navigation.PushAsync(new SignInPage(viewModel.Item));
         }
 
 		protected override void OnAppearing()
