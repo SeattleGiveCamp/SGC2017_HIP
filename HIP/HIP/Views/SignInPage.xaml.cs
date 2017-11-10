@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
+using HIP.Models;
+
+
 namespace HIP
 {
     public partial class SignInPage : ContentPage
@@ -12,10 +15,10 @@ namespace HIP
             Navigation.PushAsync(new AdditionalVolunteerPage((MobileAppService.Models.UserModel user) => viewModel.AddVolunteer(user)));
         }
 
-        public SignInPage()
+        public SignInPage(Event program)
         {
             InitializeComponent();
-            BindingContext = viewModel = new SignInViewModel(Navigation);
+            BindingContext = viewModel = new SignInViewModel(Navigation, program);
             viewModel.AdditionalVolunteers.CollectionChanged += (sender, e) => UpdateListViewHeight();
 		}
 
@@ -34,6 +37,5 @@ namespace HIP
 		}
 
         private SignInViewModel viewModel;
-
     }
 }

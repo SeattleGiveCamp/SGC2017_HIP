@@ -12,8 +12,8 @@ namespace HIP
 {
     public class ProgramListViewModel : ViewModelBase
     {
-        public ObservableCollection<ProgramListItemViewModel> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public ObservableCollection<ProgramListItemViewModel> Items { get; }
+        public Command LoadItemsCommand { get; }
 
         public ProgramListViewModel()
         {

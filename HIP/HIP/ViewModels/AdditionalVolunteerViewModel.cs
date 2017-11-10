@@ -5,8 +5,6 @@ namespace HIP.ViewModels
 {
     public class AdditionalVolunteerViewModel
     {
-        
-
         public AdditionalVolunteerViewModel()
         {
             

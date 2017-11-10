@@ -17,10 +17,10 @@ namespace HIP
             Date = model.Start.ToString();
 		}
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Date { get; set; }
+        public string Name { get; }
+        public string Description { get; }
+        public string Date { get; }
 
-		public Event Event { get; set; }
+		public Event Event { get; }
 	}
 }

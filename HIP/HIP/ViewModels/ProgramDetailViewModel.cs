@@ -14,13 +14,13 @@ namespace HIP
 {
     public class ProgramDetailViewModel : ViewModelBase
     {
-        public Event Item { get; set; }
+        public Event Item { get; }
 
-        public ProgramDetailViewModel(Event item = null)
+        public ProgramDetailViewModel(Event item)
         {
             UserCalendars = new ObservableCollection<Calendar>();
-            Title = item?.Name;
             Item = item;
+            Title = item.Name;
 			Name = item.Name;
 			Description = item.Description;
             Date = item.Start.ToString();
