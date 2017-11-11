@@ -1,8 +1,12 @@
-﻿using System;
+﻿using HIP.Helpers;
+using System;
 namespace HIP.MobileAppService.Models
 {
 	public class UserModel
 	{
+        public static UserModel CurrentUser => 
+            new UserModel(Settings.Email, Settings.FirstName, Settings.LastName);
+
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string Email { get; set; }
