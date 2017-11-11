@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using HIP.Models;
+using HIP.Helpers;
 
 namespace HIP
 {
@@ -17,23 +18,9 @@ namespace HIP
 
         public LoginPage()
 		{
-            if (Application.Current.Properties.ContainsKey("email"))
+            if (!string.IsNullOrWhiteSpace(Settings.Email))
             {
-                var email = Application.Current.Properties["email"] as string;
-
-                var firstName = "";
-                if (Application.Current.Properties.ContainsKey("firstname"))
-                {
-                    firstName = Application.Current.Properties["firstname"] as string;
-                }
-
-                var lastName = "";
-                if (Application.Current.Properties.ContainsKey("lastname"))
-                {
-                    lastName = Application.Current.Properties["lastname"] as string;
-                }
-
-                user = new UserModel(email, firstName, lastName);
+                user = new UserModel(Settings.Email, Settings.FirstName, Settings.LastName);
                 isFirstTime = false;
             }
             else
@@ -173,10 +160,9 @@ namespace HIP
                 email = emailEntry.Text;
             }
 
-            Application.Current.Properties["email"] = email;
-            Application.Current.Properties["firstname"] = firstName;
-            Application.Current.Properties["lastname"] = lastName;
-            await Application.Current.SavePropertiesAsync();
+            Settings.Email = email;
+            Settings.FirstName = firstName;
+            Settings.LastName = lastName;
 
             bool result = await DataStore.RegisterUserAsync(new UserModel(email, firstName, lastName));
             if (!result)

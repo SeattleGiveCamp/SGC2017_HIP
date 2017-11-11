@@ -1,4 +1,5 @@
-﻿using HIP.Models;
+﻿using HIP.Helpers;
+using HIP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,21 +18,11 @@ namespace HIP
             public Switch programSwitch;
         }
         List<favorite> favoriteList;
-        List<string> knownFavorites;
 
         Label loadingDetailsLabel;
 
         public FavoriteProgramsPage()
 		{
-            if (Application.Current.Properties.ContainsKey("favorites"))
-            {
-                var favsWithNewlines = Application.Current.Properties["favorites"] as string;
-                knownFavorites = favsWithNewlines.Split('\n').ToList();
-            }
-            else
-            {
-                knownFavorites = new List<string>();
-            }
 
             loadElements();
         }
@@ -140,7 +131,7 @@ namespace HIP
                 elementLayout.Children.Add(switch1);
                 elementLayout.Children.Add(switchDescription);
 
-                switch1.IsToggled = knownFavorites.Contains(favoriteList[i].programType.Name);
+                switch1.IsToggled = Settings.IsFavorite(favoriteList[i].programType.Name);
 
                 layout.Children.Add(elementLayout);
             }
@@ -164,18 +155,11 @@ namespace HIP
 
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
-            var newFavs = new List<string>();
 
             foreach (favorite fav in favoriteList)
             {
-                if (fav.programSwitch.IsToggled)
-                {
-                    newFavs.Add(fav.programType.Name);
-                }
+                Settings.SetFavorite(fav.programType.Name, fav.programSwitch.IsToggled);
             }
-            var joinedString = string.Join("\n", newFavs.ToArray());
-            Application.Current.Properties["favorites"] = joinedString;
-            await Application.Current.SavePropertiesAsync();
 
             App.Current.MainPage = new NavigationPage(new UpcomingProgramsPage());
         }
