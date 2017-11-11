@@ -1,9 +1,10 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+
 using HIP.Models;
 using HIP.Services;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace HIP
 {
@@ -21,6 +22,7 @@ namespace HIP
                 calendarPicker.IsVisible = false;
                 doAddEvent();
             };
+
             calendarPicker.On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUpdateMode(UpdateMode.WhenFinished);
         }
 

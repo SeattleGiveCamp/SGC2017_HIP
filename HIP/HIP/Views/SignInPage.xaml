@@ -20,7 +20,7 @@
                     <Label FontSize="Medium" Text="List others who volunteered with you if they are not recording hours separately." />
                     <StackLayout Orientation="Horizontal" Spacing="50">
                         <Label FontSize="Large" FontAttributes="Bold" Text="Additional Volunteers" VerticalTextAlignment="Center" />
-                        <Button Text="Add" Image="ic_person_add.png" BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2" Clicked="Handle_Clicked" />
+                        <Button Text="Add" Image="ic_person_add.png" BorderColor="{StaticResource Primary}" BorderRadius="5" BorderWidth="2" Clicked="AddAdditionalVolunteer" />
                     </StackLayout>
                     <ListView x:Name="AdditionalVolunteersListView" ItemsSource="{Binding AdditionalVolunteers}" VerticalOptions="FillAndExpand" RowHeight="50">
                         <ListView.ItemTemplate>
@@ -36,7 +36,7 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-            <Button Grid.Row="2" Margin="50,40,50,40" Text="Send" BackgroundColor="{StaticResource Primary}" TextColor="White" Command="{Binding SendCommand}" />
+            <Button Grid.Row="2" Margin="50,40,50,40" Text="Send" BackgroundColor="{StaticResource Primary}" TextColor="White" Clicked="Send" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

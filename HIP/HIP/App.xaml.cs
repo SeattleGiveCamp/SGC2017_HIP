@@ -29,7 +29,7 @@ namespace HIP
                 DependencyService.Register<CloudDataStore>();
 
             //Only show the settings screen initially if the user has not previously provided an email
-            if (Application.Current.Properties != null && Application.Current.Properties.ContainsKey("email"))
+            if (!string.IsNullOrWhiteSpace(Settings.Email))
             {
                 MainPage = new NavigationPage(new UpcomingProgramsPage());
             }
