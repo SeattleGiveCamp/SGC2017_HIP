@@ -20,6 +20,7 @@ namespace HIP
         {
             client = new HttpClient();
             client.BaseAddress = new Uri($"{App.BackendUrl}/");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("MagicCookie", "chocolate-chip");
 
             items = new List<Event>();
         }
